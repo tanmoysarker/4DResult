@@ -14,6 +14,8 @@ import Toolbox from './src/Toolbox'
 import Notifications from './src/Notifications'
 import Multiple from './src/Multiple'
 import Settings from './src/Settings'
+import Toolbox1 from './src/Toolbox1'
+import LuckySpin from './src/LuckySpin'
 
 
 class customDrawerContentComponent extends Component {
@@ -57,8 +59,8 @@ const DashboardDrawerNavigator = createBottomTabNavigator({
   //     )
   //   }
   // },
-  Toolbox: {
-    screen: Toolbox,
+  Toolbox1: {
+    screen: Toolbox1,
     navigationOptions: {
       tabBarLabel: 'Toolbox',
       tabBarIcon:({tintColor})=> (
@@ -112,6 +114,18 @@ const DashboardDrawerNavigator = createBottomTabNavigator({
 const DashboardStackNavigator = createStackNavigator({
   DashboardTabNavigator: {
     screen: DashboardDrawerNavigator,
+    navigationOptions: () => ({
+      header: null
+    })
+  },
+  Toolbox: {
+    screen: Toolbox,
+    navigationOptions: () => ({
+      header: null
+    })
+  },
+  LuckySpin:{
+    screen: LuckySpin,
     navigationOptions: () => ({
       header: null
     })
