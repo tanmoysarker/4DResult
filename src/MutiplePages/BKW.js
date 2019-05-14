@@ -84,9 +84,9 @@ export class BKW extends Component {
             </View>
 
             <View>
-              <Card style={{ backgroundColor: '#05a82d', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
+              <Card style={{ backgroundColor: 'green', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
-                  <Image source={require('../assets/logo2.jpg')} style={styles.imageStyle}
+                  <Image source={require('../assets/logo1.jpg')} style={styles.imageStyle}
                   /></View>
                 <View>
                   <Text style={styles.textStyle}>STC 4D</Text>
@@ -121,9 +121,9 @@ export class BKW extends Component {
             </View>
 
             <View>
-              <Card style={{ backgroundColor: '#05a82d', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
+              <Card style={{ backgroundColor: 'green', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
-                  <Image source={require('../assets/logo4.jpg')} style={styles.imageStyle}
+                  <Image source={require('../assets/logo2.jpg')} style={styles.imageStyle}
                   /></View>
                 <View>
                   <Text style={styles.textStyle}>Cash Sweep</Text>

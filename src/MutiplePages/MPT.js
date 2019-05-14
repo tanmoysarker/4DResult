@@ -35,15 +35,15 @@ export class MPT extends Component {
     return (
       <Container>
         <Content>
-          <View style={{ paddingTop: 10, spaddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+          <View style={{ paddingTop: 10, paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-evenly' }}>
 
             <View>
-              <Card style={{ backgroundColor: '#a80505', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
+              <Card style={{ backgroundColor: '#000', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
-                  <Image source={require('../assets/logo4.jpg')} style={styles.imageStyle}
+                  <Image source={require('../assets/logo1.jpg')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>Sabah 88</Text>
+                  <Text style={styles.textStyle}>Magnum</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                   <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>24/05/2019</Text>
@@ -53,34 +53,34 @@ export class MPT extends Component {
                 </View>
               </Card>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead1} style={{ height: 30, backgroundColor: '#a80505' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead1} style={{ height: 30, backgroundColor: '#000' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData1} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead2} style={{ height: 30, backgroundColor: '#a80505' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead2} style={{ height: 30, backgroundColor: '#000' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData2} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead3} style={{ height: 30, backgroundColor: '#a80505' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead3} style={{ height: 30, backgroundColor: '#000' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData3} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead4} style={{ height: 30, backgroundColor: '#a80505' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead4} style={{ height: 30, backgroundColor: '#000' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData4} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead5} style={{ height: 30, backgroundColor: '#a80505' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead5} style={{ height: 30, backgroundColor: '#000' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData5} textStyle={styles.text} />
               </Table>
             </View>
 
             <View>
-              <Card style={{ backgroundColor: '#05a82d', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
+              <Card style={{ backgroundColor: 'red', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
                   <Image source={require('../assets/logo2.jpg')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>STC 4D</Text>
+                  <Text style={styles.textStyle}>Damacai</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                   <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>24/05/2019</Text>
@@ -90,34 +90,34 @@ export class MPT extends Component {
                 </View>
               </Card>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead1} style={{ height: 30, backgroundColor: '#05a82d' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead1} style={{ height: 30, backgroundColor: 'red' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData1} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead2} style={{ height: 30, backgroundColor: '#05a82d' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead2} style={{ height: 30, backgroundColor: 'red' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData2} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead3} style={{ height: 30, backgroundColor: '#05a82d' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead3} style={{ height: 30, backgroundColor: 'red' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData3} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead4} style={{ height: 30, backgroundColor: '#05a82d' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead4} style={{ height: 30, backgroundColor: 'red' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData4} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead5} style={{ height: 30, backgroundColor: '#05a82d' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead5} style={{ height: 30, backgroundColor: 'red' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData5} textStyle={styles.text} />
               </Table>
             </View>
 
             <View>
-              <Card style={{ backgroundColor: '#05a82d', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
+              <Card style={{ backgroundColor: 'red', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
-                  <Image source={require('../assets/logo4.jpg')} style={styles.imageStyle}
+                  <Image source={require('../assets/logo3.png')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>Cash Sweep</Text>
+                  <Text style={styles.textStyle}>Toto</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                   <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>24/05/2019</Text>
@@ -127,23 +127,23 @@ export class MPT extends Component {
                 </View>
               </Card>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead1} style={{ height: 30, backgroundColor: '#05a82d' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead1} style={{ height: 30, backgroundColor: 'red' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData1} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead2} style={{ height: 30, backgroundColor: '#05a82d' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead2} style={{ height: 30, backgroundColor: 'red' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData2} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead3} style={{ height: 30, backgroundColor: '#05a82d' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead3} style={{ height: 30, backgroundColor: 'red' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData3} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead4} style={{ height: 30, backgroundColor: '#05a82d' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead4} style={{ height: 30, backgroundColor: 'red' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData4} textStyle={styles.text} />
               </Table>
               <Table borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
-                <Row data={this.state.tableHead5} style={{ height: 30, backgroundColor: '#05a82d' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
+                <Row data={this.state.tableHead5} style={{ height: 30, backgroundColor: 'red' }} textStyle={{color:'#fff',margin:6,alignSelf:'center'}} />
                 <Rows data={this.state.tableData5} textStyle={styles.text} />
               </Table>
             </View>

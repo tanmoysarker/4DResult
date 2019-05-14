@@ -42,14 +42,6 @@ export class Multiple extends Component {
             <Title>Multiple</Title>
           </Body>
         </Header>
-        {/* <Footer style={{ height: 50, paddingHorizontal: 10, backgroundColor: '#fff' }}>
-          <FooterTab style={{ paddingHorizontal: 10, backgroundColor: '#fff', alignItems: 'center' }}>
-            <Text>MPT</Text>
-            <Text>BKW</Text>
-            <Text>S</Text>
-            <Text>5D6D</Text>
-          </FooterTab>
-        </Footer> */}
         <Content>
           <Tabs tabBarUnderlineStyle={{ borderBottomWidth: 2, backgroundColor: 'blue' }}>
             <Tab heading="MPT" tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
@@ -66,7 +58,7 @@ export class Multiple extends Component {
             </Tab>
           </Tabs>
 
-          <View style={{ paddingTop: 10, spaddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+          {/* <View style={{ paddingTop: 10, paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-evenly' }}>
 
             <View>
               <Card style={{ backgroundColor: '#a80505', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
@@ -183,7 +175,7 @@ export class Multiple extends Component {
             <Button style={{ height: 50, width: '100%', backgroundColor: '#a80505', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 18, color: '#fff' }}>Share</Text></Button>
           </View>
 
-
+ */}
 
         </Content>
       </Container>

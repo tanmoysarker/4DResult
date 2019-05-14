@@ -30,14 +30,14 @@ export default class Ninth extends Component{
   render() {
     const state = this.state;
     return (
-      <Container style={{backgroundColor:'#f4dc41'}}>
+      <Container style={{backgroundColor:'red'}}>
         <Content>
           <View>
             <Card style={{backgroundColor:'#000',height:100,paddingTop:10}}>
             <View style={{flexDirection:'row',paddingHorizontal:10}}>
             <Left></Left>
-            <Body><Text style={{color:'#fff'}}>Magnum</Text></Body>  
-            <Right><Image source={require('../assets/logo4.jpg')}style={{width:40,height:40}}
+            <Body><Text style={{color:'#fff'}}>GD Lotto</Text></Body>  
+            <Right><Image source={require('../assets/logo1.jpg')}style={{width:40,height:40}}
         /></Right>
             </View>
             <View style={{paddingVertical:10,flexDirection:'row'}}>

@@ -30,13 +30,13 @@ export default class Fourth extends Component{
   render() {
     const state = this.state;
     return (
-      <Container style={{backgroundColor:'#f4dc41'}}>
+      <Container style={{backgroundColor:'#4286f4'}}>
         <Content>
           <View>
             <Card style={{backgroundColor:'#000',height:100,paddingTop:10}}>
             <View style={{flexDirection:'row',paddingHorizontal:10}}>
             <Left></Left>
-            <Body><Text style={{color:'#fff'}}>Magnum</Text></Body>  
+            <Body><Text style={{color:'#fff'}}>Singpore 4D</Text></Body>  
             <Right><Image source={require('../assets/logo4.jpg')}style={{width:40,height:40}}
         /></Right>
             </View>

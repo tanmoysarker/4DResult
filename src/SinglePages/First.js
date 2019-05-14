@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,Image,TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View,Image,TouchableOpacity,AsyncStorage} from 'react-native';
 import { Container,Content, Header, Title, Button, Left, Right, Body, Icon,Card,Footer, FooterTab,Badge } from 'native-base';
 import { Table, Row, Rows } from 'react-native-table-component';
 
@@ -7,6 +7,12 @@ export default class First extends Component{
   constructor(props) {
     super(props);
     this.state = {
+      first:'',
+      second:'',
+      third:'',
+      fourth:[],
+      fifth:[],
+      sixth:[],
       tableHead2: ['Special'],
       tableHead3: ['Consolidation'],
       tableData1: [
@@ -15,7 +21,7 @@ export default class First extends Component{
         ['3RD Prize', '300']
       ],
       tableData2: [
-        ['53153', '1000','----','5555','51616'],
+        fourth,
         ['31355', '500','----','5555','51616'],
         ['51456', '300','----','5555','51616']
       ],
@@ -27,6 +33,28 @@ export default class First extends Component{
     }
   }
 
+  async componentDidMount(){
+   await fetch('https://fourdresult.herokuapp.com/magnum',{
+      method : 'GET',
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      const first = response.message[0][0]
+      const second = response.message[0][1]
+      const third = response.message[0][2]
+      console.log(first,second,third)
+
+      const fourth = response.message[1].slice(0,5)
+      const fifth = response.message[1].slice(5,10)
+      const sixth = response.message[1].slice(10,13)
+      console.log(fourth,fifth,sixth)  
+
+      this.setState ({fourth:fourth})
+      this.setState ({fifth: fifth })
+      this.setState ({sixth: sixth })
+  })
+  // console.log(fourth,fifth,sixth)
+  }
   render() {
     const state = this.state;
     return (
