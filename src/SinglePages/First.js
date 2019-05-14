@@ -10,26 +10,11 @@ export default class First extends Component{
       first:'',
       second:'',
       third:'',
-      fourth:[],
-      fifth:[],
-      sixth:[],
       tableHead2: ['Special'],
       tableHead3: ['Consolidation'],
-      tableData1: [
-        ['1ST Prize', '1000'],
-        ['2ND Prize', '500'],
-        ['3RD Prize', '300']
-      ],
-      tableData2: [
-        fourth,
-        ['31355', '500','----','5555','51616'],
-        ['51456', '300','----','5555','51616']
-      ],
-      tableData3: [
-        ['53153', '1000','----','5555','51616'],
-        ['31355', '500','----','5555','51616'],
-        ['51456', '300','----','5555','51616']
-      ],
+      tableData1: [],
+      tableData2: [],
+      tableData3:[],
     }
   }
 
@@ -39,21 +24,16 @@ export default class First extends Component{
     })
     .then((response) => response.json())
     .then((response) => {
-      const first = response.message[0][0]
-      const second = response.message[0][1]
-      const third = response.message[0][2]
-      console.log(first,second,third)
-
-      const fourth = response.message[1].slice(0,5)
-      const fifth = response.message[1].slice(5,10)
-      const sixth = response.message[1].slice(10,13)
-      console.log(fourth,fifth,sixth)  
-
-      this.setState ({fourth:fourth})
-      this.setState ({fifth: fifth })
-      this.setState ({sixth: sixth })
+      const first = response.magnum
+      this.setState({ tableData1: first })
+      const second = response.special
+      this.setState({ tableData2: second })
+      const third = response.consolation
+      this.setState({ tableData3: third })
+      
+      
   })
-  // console.log(fourth,fifth,sixth)
+  
   }
   render() {
     const state = this.state;

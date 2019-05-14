@@ -8,6 +8,9 @@ export class MPT extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      first:'',
+      second:'',
+      third:'',
       tableHead1: ['1ST Prize'],
       tableData1: [
         ['----']
@@ -21,15 +24,27 @@ export class MPT extends Component {
         ['----']
       ],
       tableHead4: ['Special'],
-      tableData4: [
-        ['----']
-      ],
+      tableData4: [],
       tableHead5: ['Consolation'],
       tableData5: [
         ['----']
       ]
     }
   }
+
+  async componentDidMount(){
+    await fetch('https://fourdresult.herokuapp.com/magnum',{
+       method : 'GET',
+     })
+     .then((response) => response.json())
+     .then((response) => {
+       const second = response.special
+       this.setState({ tableData4: second })
+       
+       
+   })
+   
+   }
   render() {
     const state = this.state;
     return (
