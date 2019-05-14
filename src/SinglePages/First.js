@@ -10,6 +10,7 @@ export default class First extends Component{
       first:'',
       second:'',
       third:'',
+      date:'',
       tableHead2: ['Special'],
       tableHead3: ['Consolidation'],
       tableData1: [],
@@ -30,6 +31,8 @@ export default class First extends Component{
       this.setState({ tableData2: second })
       const third = response.consolation
       this.setState({ tableData3: third })
+      const date = response.date
+      this.setState({date: date})
       
       
   })
@@ -49,7 +52,7 @@ export default class First extends Component{
         /></Right>
             </View>
             <View style={{paddingVertical:10,flexDirection:'row'}}>
-            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',fontSize:18,marginLeft:5}}>15/09/2019</Text></Left>
+            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',fontSize:18,marginLeft:5}}>{this.state.date}</Text></Left>
             <Body></Body>
             <Right style={{flexDirection:'row',justifyContent:'flex-end',paddingRight:10}}><Icon name='megaphone'style={{color:'#fff',fontSize:20}}/><Icon name='refresh'style={{color:'#fff',fontSize:20,marginLeft:10}}/></Right>
               
