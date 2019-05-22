@@ -11,6 +11,7 @@ export default class First extends Component{
       second:'',
       third:'',
       date:'',
+      draw:'',
       tableHead2: ['Special'],
       tableHead3: ['Consolidation'],
       tableData1: [],
@@ -33,7 +34,8 @@ export default class First extends Component{
       this.setState({ tableData3: third })
       const date = response.date
       this.setState({date: date})
-      
+      const draw = response.draw
+      this.setState({draw: draw})
       
   })
   
@@ -46,16 +48,16 @@ export default class First extends Component{
           <View>
             <Card style={{backgroundColor:'#000',height:100,paddingTop:10}}>
             <View style={{flexDirection:'row',paddingHorizontal:10}}>
-            <Left></Left>
+            <Left style={{flexDirection:'row'}}><Text style={{color:'#fff'}}>{this.state.draw}</Text></Left>
             <Body><Text style={{color:'#fff'}}>Magnum</Text></Body>  
             <Right><Image source={require('../assets/logo4.jpg')}style={{width:40,height:40}}
         /></Right>
             </View>
-            <View style={{paddingVertical:10,flexDirection:'row'}}>
-            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',fontSize:18,marginLeft:5}}>{this.state.date}</Text></Left>
+            <View style={{paddingVertical:10,flexDirection:'row',justifyContent:'space-evenly'}}>
+            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',marginLeft:5,fontSize:18}}>{this.state.date}</Text></Left>
             <Body></Body>
             <Right style={{flexDirection:'row',justifyContent:'flex-end',paddingRight:10}}><Icon name='megaphone'style={{color:'#fff',fontSize:20}}/><Icon name='refresh'style={{color:'#fff',fontSize:20,marginLeft:10}}/></Right>
-              
+            
               </View>
             </Card>
             </View>

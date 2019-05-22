@@ -27,6 +27,26 @@ export default class Eighth extends Component{
     }
   }
 
+  async componentDidMount(){
+  //   await fetch('http://draw.yes18.net/api/sh1001/?date=20190315&game=1',{
+  //      method : 'GET',
+  //    })
+  //    .then((response) => response.json())
+  //    .then((response) => {
+  //      console.log('993:', response)
+       
+  //  })
+  try {
+    const res = await fetch('http://draw.yes18.net/api/sh1001/?date=20190315&game=1'); 
+    console.log('993:', res)
+    return res;
+  } catch (err) {
+   // handle error for example
+    console.error(err);
+  }
+   
+   }
+
   render() {
     const state = this.state;
     return (
@@ -36,12 +56,12 @@ export default class Eighth extends Component{
             <Card style={{backgroundColor:'#000',height:100,paddingTop:10}}>
             <View style={{flexDirection:'row',paddingHorizontal:10}}>
             <Left></Left>
-            <Body><Text style={{color:'#fff'}}>Perdana 4D</Text></Body>  
-            <Right><Image source={require('../assets/logo4.jpg')}style={{width:40,height:40}}
+            <Body><Text style={{color:'#fff'}}>99 3P</Text></Body>  
+            <Right><Image source={require('../assets/993.png')}style={{width:40,height:40}}
         /></Right>
             </View>
             <View style={{paddingVertical:10,flexDirection:'row'}}>
-            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',fontSize:18,marginLeft:5}}>15/09/2019</Text></Left>
+            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',fontSize:18,marginLeft:5}}>19/03/2019</Text></Left>
             <Body></Body>
             <Right style={{flexDirection:'row',justifyContent:'flex-end',paddingRight:10}}><Icon name='megaphone'style={{color:'#fff',fontSize:20}}/><Icon name='refresh'style={{color:'#fff',fontSize:20,marginLeft:10}}/></Right>
               

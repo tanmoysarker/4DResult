@@ -3,6 +3,7 @@ import { Tab, Tabs, Container, Content, Header, Title, Button, Left, Right, Body
 import { View, Image, StyleSheet, AsyncStorage, Text,ScrollView } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
+
 export class MPT extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +12,6 @@ export class MPT extends Component {
       second: '',
       third: '',
       date: '',
-      tableHead: ['1ST Prize'],
       tableData: [],
       tableData1: [],
       tableData2: [],
@@ -19,8 +19,17 @@ export class MPT extends Component {
       tableData3: [],
       tableHead4: ['Special'],
       tableData4: [],
-      tableHead5: ['Consolation'],
-      tableData5: ['----'],
+      tableHead5: [],
+      tableData6: [],
+      tableData7: [],
+      tableData8: [],
+      tableData9: [],
+      tableData10: [],
+      tableData11: [],
+      tableData12: [],
+      tableData13: [],
+      tableData14: [],
+
     }
   }
 
@@ -30,12 +39,15 @@ export class MPT extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
-        const first = response.magnum[0]
-        this.setState({ tableData: first })
-        const second = response.magnum[1]
-        this.setState({ tableData1: second })
-        const third = response.magnum[2]
-        this.setState({ tableData2: third })
+        let first = response.magnum[0]
+        let firstTo = first.slice(1)
+        this.setState({ tableData: firstTo })
+        let second = response.magnum[1]
+        let secondTo = second.slice(1)
+        this.setState({ tableData1: secondTo })
+        let third = response.magnum[2]
+        let thirdTo = third.slice(1)
+        this.setState({ tableData2: thirdTo })
         const date = response.date
         this.setState({ date: date })
 
@@ -53,13 +65,68 @@ export class MPT extends Component {
 
       })
 
+      await fetch('https://fourdresult.herokuapp.com/damacai', {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        let first = response.magnum[0]
+        let firstTo = first.slice(1)
+        this.setState({ tableData5: firstTo })
+        let second = response.magnum[1]
+        let secondTo = second.slice(1)
+        this.setState({ tableData6: secondTo })
+        let third = response.magnum[2]
+        let thirdTo = third.slice(1)
+        this.setState({ tableData7: thirdTo })
+        const date = response.date
+        this.setState({ date: date })
+
+        let data1 = response.special[0]
+        let data2 = response.special[1]
+        let data3 = response.special[2]
+        let newData = data1.concat(data2, data3)
+        this.setState({ tableData8: newData })
+
+        let data4 = response.consolation[0]
+        let data5 = response.consolation[1]
+        let newData1 = data4.concat(data5)
+        this.setState({ tableData9: newData1 })
+      })
+
+      await fetch('https://fourdresult.herokuapp.com/sportstoto', {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        let first = response.magnum[0]
+        let firstTo = first.slice(1)
+        this.setState({ tableData10: firstTo })
+        let second = response.magnum[1]
+        let secondTo = second.slice(1)
+        this.setState({ tableData11: secondTo })
+        let third = response.magnum[2]
+        let thirdTo = third.slice(1)
+        this.setState({ tableData12: thirdTo })
+        const date = response.date
+        this.setState({ date: date })
+
+        let data1 = response.special[0]
+        let data2 = response.special[1]
+        let data3 = response.special[2]
+        let newData = data1.concat(data2, data3)
+        this.setState({ tableData13: newData })
+
+        let data4 = response.consolation[0]
+        let data5 = response.consolation[1]
+        let newData1 = data4.concat(data5)
+        this.setState({ tableData14: newData1 })
+      })
   }
   render() {
     const state = this.state;
     return (
-      <ScrollView>
-      <Container>
-        <Content>
+      <View>
           <View style={{ paddingTop: 10, paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-evenly' }}>
 
             <View>
@@ -152,7 +219,7 @@ export class MPT extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="1ST Prize" style={{ width: 110, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData5} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -162,7 +229,7 @@ export class MPT extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="2ND Prize" style={{ width: 110, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData1} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData6} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -172,7 +239,7 @@ export class MPT extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="3RD Prize" style={{ width: 110, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData2} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData7} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -182,7 +249,7 @@ export class MPT extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="Special" style={{ width: 110, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData3} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData8} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -192,7 +259,7 @@ export class MPT extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="Consolation" style={{ width: 110, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData4} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData9} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -222,7 +289,7 @@ export class MPT extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="1ST Prize" style={{ width: 110, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData10} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -232,7 +299,7 @@ export class MPT extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="2ND Prize" style={{ width: 110, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData1} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData11} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -242,7 +309,7 @@ export class MPT extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="3RD Prize" style={{ width: 110, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData2} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData12} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -252,7 +319,7 @@ export class MPT extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="Special" style={{ width: 110, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData4} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData13} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -262,7 +329,7 @@ export class MPT extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="Consolation" style={{ width: 110, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData3} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData14} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -271,20 +338,17 @@ export class MPT extends Component {
       
             
           </View>
-          <View style={{ paddingVertical: 10 }}>
-            <Button style={{ height: 50, width: '100%', backgroundColor: '#a80505', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 18, color: '#fff' }}>Share</Text></Button>
+          <View style={{ paddingVertical: 20 }}>
+            <Button style={{ height: 50, width: '100%', backgroundColor: '#000', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 18, color: '#fff' }}>Share</Text></Button>
           </View>
-
-        </Content>
-      </Container>
-      </ScrollView>
+      </View>
     )
   }
 }
 
 export default MPT
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
+  container: {  backgroundColor: '#fff' },
   head: { height: 40, backgroundColor: '#f1f8ff' },
   text: { margin: 6, alignSelf: 'center' },
   imageStyle: {
@@ -300,5 +364,5 @@ const styles = StyleSheet.create({
     height: 30
 
   }, wrapper: { flexDirection: 'row' },
-  title: { flex: 2, backgroundColor: '#f6f8fa' },
+  title: {  backgroundColor: '#f6f8fa' },
 });
