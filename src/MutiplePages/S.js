@@ -12,6 +12,9 @@ export class S extends Component {
       second: '',
       third: '',
       date: '',
+      date1:'',
+      month:'',
+      year:'',
       tableData: [],
       tableData1: [],
       tableData2: [],
@@ -63,36 +66,39 @@ export class S extends Component {
 
       })
 
-      await fetch('https://fourdresult.herokuapp.com/stc', {
-      method: 'GET',
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        let first = response.magnum[0]
-        let firstTo = first.slice(1)
-        this.setState({ tableData5: firstTo })
-        let second = response.magnum[1]
-        let secondTo = second.slice(1)
-        this.setState({ tableData6: secondTo })
-        let third = response.magnum[2]
-        let thirdTo = third.slice(1)
-        this.setState({ tableData7: thirdTo })
-        const date = response.date
-        this.setState({ date: date })
-
-        let data1 = response.special[0]
-        let data2 = response.special[1]
-        let data3 = response.special[2]
-        let newData = data1.concat(data2, data3)
-        this.setState({ tableData8: newData })
-
-        let data4 = response.consolation[0]
-        let data5 = response.consolation[1]
-        let newData1 = data4.concat(data5)
-        this.setState({ tableData9: newData1 })
+      await fetch('https://fourdresult.herokuapp.com/magnum', {
+        method: 'GET',
       })
+        .then((response) => response.json())
+        .then((response) => {
+          let first = response.magnum[0]
+          let firstTo = first.slice(1)
+          this.setState({ tableData5: firstTo })
+          let second = response.magnum[1]
+          let secondTo = second.slice(1)
+          this.setState({ tableData6: secondTo })
+          let third = response.magnum[2]
+          let thirdTo = third.slice(1)
+          this.setState({ tableData7: thirdTo })
+          const date = response.date
+          this.setState({ date: date })
+  
+          let data1 = response.special[0]
+          let data2 = response.special[1]
+          let data3 = response.special[2]
+          let newData = data1.concat(data2, data3)
+          this.setState({ tableData8: newData })
+  
+          let data4 = response.consolation[0]
+          let data5 = response.consolation[1]
+          let newData1 = data4.concat(data5)
+          this.setState({ tableData9: newData1 })
+  
+  
+        })
+  
 
-      await fetch('https://fourdresult.herokuapp.com/cashSweep', {
+      await fetch('https://fourdresult.herokuapp.com/damacai', {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -196,16 +202,16 @@ export class S extends Component {
               </View>
               
               
-            <View>
+              <View>
               <Card style={{ backgroundColor: '#ed1515', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
-                  <Image source={require('../assets/logo2.jpg')} style={styles.imageStyle}
+                  <Image source={require('../assets/logo1.jpg')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>GD Lotto</Text>
+                  <Text style={styles.textStyle}>Magnum</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>24/05/2019</Text>
+                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>{this.state.date}</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                   <Icon name='megaphone' style={{ color: '#fff', fontSize: 22, marginTop: 15 }} /><Icon name='refresh' style={{ color: '#fff', fontSize: 22, marginLeft: 15, marginTop: 15 }} />
@@ -272,7 +278,7 @@ export class S extends Component {
                   <Image source={require('../assets/logo3.png')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>Perdana 5D</Text>
+                  <Text style={styles.textStyle}>Damacai</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                   <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>24/05/2019</Text>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,Image,TouchableOpacity,AsyncStorage} from 'react-native';
+import {Platform, StyleSheet, Text, View,Image,TouchableOpacity} from 'react-native';
 import { Container,Content, Header, Title, Button, Left, Right, Body, Icon,Card,Footer, FooterTab,Badge } from 'native-base';
 import { Table, Row, Rows } from 'react-native-table-component';
 
@@ -11,53 +11,62 @@ export default class First extends Component{
       second:'',
       third:'',
       date:'',
+      month:'',
+      year:'',
       draw:'',
       tableHead2: ['Special'],
       tableHead3: ['Consolidation'],
       tableData1: [],
-      tableData2: [],
-      tableData3:[],
+      tableData2: [
+        ['----', '-----','----','----','----'],
+        ['----', '----','----','----','----'],
+        ['----', '----','----','----','-----']
+      ],
+      tableData3: [
+        ['----', '-----','----','----','----'],
+        ['----', '----','----','----','----'],
+        ['----', '----','----','----','-----']
+      ],
     }
   }
 
   async componentDidMount(){
-   await fetch('https://fourdresult.herokuapp.com/magnum',{
-      method : 'GET',
-    })
-    .then((response) => response.json())
-    .then((response) => {
-      const first = response.magnum
+    await fetch('https://fourdresult.herokuapp.com/nine93',{
+       method : 'GET',
+     })
+     .then((response) => response.json())
+     .then((response) => {
+      const first = response.First
       this.setState({ tableData1: first })
-      const second = response.special
-      this.setState({ tableData2: second })
-      const third = response.consolation
-      this.setState({ tableData3: third })
-      const date = response.date
+      const date = response.Date[0]
       this.setState({date: date})
-      const draw = response.draw
-      this.setState({draw: draw})
-      
-  })
-  
-  }
+      const month = response.Date[1]
+      this.setState({month: month})
+      const year = response.Date[2]
+      this.setState({year: year})
+       
+   })
+   
+   }
+
   render() {
     const state = this.state;
     return (
-      <Container style={{backgroundColor:'#f4dc41'}}>
+      <Container style={{backgroundColor:'#ccc696'}}>
         <Content>
           <View>
             <Card style={{backgroundColor:'#000',height:100,paddingTop:10}}>
             <View style={{flexDirection:'row',paddingHorizontal:10}}>
-            <Left style={{flexDirection:'row'}}><Text style={{color:'#fff'}}>{this.state.draw}</Text></Left>
-            <Body><Text style={{color:'#fff'}}>Magnum</Text></Body>  
-            <Right><Image source={require('../assets/logo4.jpg')}style={{width:40,height:40}}
+            <Left></Left>
+            <Body><Text style={{color:'#fff'}}>99 3PM</Text></Body>  
+            <Right><Image source={require('../assets/993.png')}style={{width:40,height:40}}
         /></Right>
             </View>
-            <View style={{paddingVertical:10,flexDirection:'row',justifyContent:'space-evenly'}}>
-            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',marginLeft:5,fontSize:18}}>{this.state.date}</Text></Left>
+            <View style={{paddingVertical:10,flexDirection:'row'}}>
+            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',fontSize:18,marginLeft:5}}>{this.state.date}/{this.state.month}/{this.state.year}</Text></Left>
             <Body></Body>
             <Right style={{flexDirection:'row',justifyContent:'flex-end',paddingRight:10}}><Icon name='megaphone'style={{color:'#fff',fontSize:20}}/><Icon name='refresh'style={{color:'#fff',fontSize:20,marginLeft:10}}/></Right>
-            
+              
               </View>
             </Card>
             </View>

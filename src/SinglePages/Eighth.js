@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,Image,TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View,Image,TouchableOpacity,AsyncStorage} from 'react-native';
 import { Container,Content, Header, Title, Button, Left, Right, Body, Icon,Card,Footer, FooterTab,Badge } from 'native-base';
 import { Table, Row, Rows } from 'react-native-table-component';
 
@@ -7,64 +7,57 @@ export default class Eighth extends Component{
   constructor(props) {
     super(props);
     this.state = {
+      first:'',
+      second:'',
+      third:'',
+      date:'',
+      draw:'',
       tableHead2: ['Special'],
       tableHead3: ['Consolidation'],
-      tableData1: [
-        ['1ST Prize', '1000'],
-        ['2ND Prize', '500'],
-        ['3RD Prize', '300']
-      ],
-      tableData2: [
-        ['53153', '1000','----','5555','51616'],
-        ['31355', '500','----','5555','51616'],
-        ['51456', '300','----','5555','51616']
-      ],
-      tableData3: [
-        ['53153', '1000','----','5555','51616'],
-        ['31355', '500','----','5555','51616'],
-        ['51456', '300','----','5555','51616']
-      ],
+      tableData1: [],
+      tableData2: [],
+      tableData3:[],
     }
   }
 
   async componentDidMount(){
-  //   await fetch('http://draw.yes18.net/api/sh1001/?date=20190315&game=1',{
-  //      method : 'GET',
-  //    })
-  //    .then((response) => response.json())
-  //    .then((response) => {
-  //      console.log('993:', response)
-       
-  //  })
-  try {
-    const res = await fetch('http://draw.yes18.net/api/sh1001/?date=20190315&game=1'); 
-    console.log('993:', res)
-    return res;
-  } catch (err) {
-   // handle error for example
-    console.error(err);
+   await fetch('https://fourdresult.herokuapp.com/magnum',{
+      method : 'GET',
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      const first = response.magnum
+      this.setState({ tableData1: first })
+      const second = response.special
+      this.setState({ tableData2: second })
+      const third = response.consolation
+      this.setState({ tableData3: third })
+      const date = response.date
+      this.setState({date: date})
+      const draw = response.draw
+      this.setState({draw: draw})
+      
+  })
+  
   }
-   
-   }
-
   render() {
     const state = this.state;
     return (
-      <Container style={{backgroundColor:'#ccc696'}}>
+      <Container style={{backgroundColor:'#f4dc41'}}>
         <Content>
           <View>
             <Card style={{backgroundColor:'#000',height:100,paddingTop:10}}>
             <View style={{flexDirection:'row',paddingHorizontal:10}}>
-            <Left></Left>
-            <Body><Text style={{color:'#fff'}}>99 3P</Text></Body>  
-            <Right><Image source={require('../assets/993.png')}style={{width:40,height:40}}
+            <Left style={{flexDirection:'row'}}><Text style={{color:'#fff'}}>{this.state.draw}</Text></Left>
+            <Body><Text style={{color:'#fff'}}>Magnum</Text></Body>  
+            <Right><Image source={require('../assets/logo4.jpg')}style={{width:40,height:40}}
         /></Right>
             </View>
-            <View style={{paddingVertical:10,flexDirection:'row'}}>
-            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',fontSize:18,marginLeft:5}}>19/03/2019</Text></Left>
+            <View style={{paddingVertical:10,flexDirection:'row',justifyContent:'space-evenly'}}>
+            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',marginLeft:5,fontSize:18}}>{this.state.date}</Text></Left>
             <Body></Body>
             <Right style={{flexDirection:'row',justifyContent:'flex-end',paddingRight:10}}><Icon name='megaphone'style={{color:'#fff',fontSize:20}}/><Icon name='refresh'style={{color:'#fff',fontSize:20,marginLeft:10}}/></Right>
-              
+            
               </View>
             </Card>
             </View>

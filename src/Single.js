@@ -14,28 +14,6 @@ import Ninth from './SinglePages/Ninth'
 import Tenth from './SinglePages/Tenth'
 
 export default class Single extends Component{
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     tableHead2: ['Special'],
-  //     tableHead3: ['Consolidation'],
-  //     tableData1: [
-  //       ['1ST Prize', '1000'],
-  //       ['2ND Prize', '500'],
-  //       ['3RD Prize', '300']
-  //     ],
-  //     tableData2: [
-  //       ['53153', '1000','----','5555','51616'],
-  //       ['31355', '500','----','5555','51616'],
-  //       ['51456', '300','----','5555','51616']
-  //     ],
-  //     tableData3: [
-  //       ['53153', '1000','----','5555','51616'],
-  //       ['31355', '500','----','5555','51616'],
-  //       ['51456', '300','----','5555','51616']
-  //     ],
-  //   }
-  // }
 
  
   render() {
@@ -50,11 +28,11 @@ export default class Single extends Component{
           </Header>
           
           <Tabs tabBarUnderlineStyle={{ borderBottomWidth: 2, backgroundColor: 'blue' }}>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/logo1.jpg')}style={styles.button1}
+            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/993.png')}style={{alignItems:'center',justifyContent:'center',width:30,height:30,borderRadius:10}}
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <First />
             </Tab>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/logo2.jpg')}style={styles.button1}
+            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/993.png')}style={{alignItems:'center',justifyContent:'center',width:30,height:30,borderRadius:10}}
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Second />
             </Tab>

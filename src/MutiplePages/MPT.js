@@ -12,12 +12,16 @@ export class MPT extends Component {
       second: '',
       third: '',
       date: '',
+      date1:'',
+      date2:'',
+      month2:'',
+      year2:'',
+      month:'',
+      year:'',
       tableData: [],
       tableData1: [],
       tableData2: [],
-      tableHead3: [],
       tableData3: [],
-      tableHead4: ['Special'],
       tableData4: [],
       tableHead5: [],
       tableData6: [],
@@ -34,64 +38,49 @@ export class MPT extends Component {
   }
 
   async componentDidMount() {
-    await fetch('https://fourdresult.herokuapp.com/magnum', {
+    await fetch('https://fourdresult.herokuapp.com/nine93', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
-        let first = response.magnum[0]
+        let first = response.First[0]
         let firstTo = first.slice(1)
         this.setState({ tableData: firstTo })
-        let second = response.magnum[1]
+        let second = response.First[1]
         let secondTo = second.slice(1)
         this.setState({ tableData1: secondTo })
-        let third = response.magnum[2]
+        let third = response.First[2]
         let thirdTo = third.slice(1)
         this.setState({ tableData2: thirdTo })
-        const date = response.date
-        this.setState({ date: date })
-
-        let data1 = response.special[0]
-        let data2 = response.special[1]
-        let data3 = response.special[2]
-        let newData = data1.concat(data2, data3)
-        this.setState({ tableData4: newData })
-
-        let data4 = response.consolation[0]
-        let data5 = response.consolation[1]
-        let newData1 = data4.concat(data5)
-        this.setState({ tableData3: newData1 })
-
+        const date1 = response.Date[0]
+        this.setState({date1: date1})
+        const month = response.Date[1]
+        this.setState({month: month})
+        const year = response.Date[2]
+        this.setState({year: year})
 
       })
 
-      await fetch('https://fourdresult.herokuapp.com/damacai', {
+      await fetch('https://fourdresult.herokuapp.com/nine97', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
-        let first = response.magnum[0]
+        let first = response.First[0]
         let firstTo = first.slice(1)
         this.setState({ tableData5: firstTo })
-        let second = response.magnum[1]
+        let second = response.First[1]
         let secondTo = second.slice(1)
         this.setState({ tableData6: secondTo })
-        let third = response.magnum[2]
+        let third = response.First[2]
         let thirdTo = third.slice(1)
         this.setState({ tableData7: thirdTo })
-        const date = response.date
-        this.setState({ date: date })
-
-        let data1 = response.special[0]
-        let data2 = response.special[1]
-        let data3 = response.special[2]
-        let newData = data1.concat(data2, data3)
-        this.setState({ tableData8: newData })
-
-        let data4 = response.consolation[0]
-        let data5 = response.consolation[1]
-        let newData1 = data4.concat(data5)
-        this.setState({ tableData9: newData1 })
+        const date2 = response.Date[0]
+        this.setState({date2: date2})
+        const month2 = response.Date[1]
+        this.setState({month2: month2})
+        const year2 = response.Date[2]
+        this.setState({year2: year2})
       })
 
       await fetch('https://fourdresult.herokuapp.com/sportstoto', {
@@ -129,16 +118,16 @@ export class MPT extends Component {
       <View>
           <View style={{ paddingTop: 10, paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-evenly' }}>
 
-            <View>
+          <View>
               <Card style={{ backgroundColor: '#000', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
-                  <Image source={require('../assets/logo1.jpg')} style={styles.imageStyle}
+                  <Image source={require('../assets/993.png')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>Magnum</Text>
+                  <Text style={styles.textStyle}>99 3PM</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>{this.state.date}</Text>
+                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>{this.state.date1}/{this.state.month}/{this.state.year}</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                   <Icon name='megaphone' style={{ color: '#fff', fontSize: 22, marginTop: 15 }} /><Icon name='refresh' style={{ color: '#fff', fontSize: 22, marginLeft: 15, marginTop: 15 }} />
@@ -201,13 +190,13 @@ export class MPT extends Component {
             <View>
               <Card style={{ backgroundColor: 'red', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
-                  <Image source={require('../assets/logo2.jpg')} style={styles.imageStyle}
+                  <Image source={require('../assets/993.png')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>Damacai</Text>
+                  <Text style={styles.textStyle}>99 7PM</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>24/05/2019</Text>
+                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>{this.state.date1}/{this.state.month}/{this.state.year}</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                   <Icon name='megaphone' style={{ color: '#fff', fontSize: 22, marginTop: 15 }} /><Icon name='refresh' style={{ color: '#fff', fontSize: 22, marginLeft: 15, marginTop: 15 }} />

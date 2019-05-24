@@ -11,51 +11,59 @@ export default class Second extends Component{
       second:'',
       third:'',
       date:'',
+      month:'',
+      year:'',
       draw:'',
       tableHead2: ['Special'],
       tableHead3: ['Consolidation'],
       tableData1: [],
-      tableData2: [],
-      tableData3:[],
+      tableData2: [
+        ['----', '-----','----','----','----'],
+        ['----', '----','----','----','----'],
+        ['----', '----','----','----','-----']
+      ],
+      tableData3: [
+        ['----', '-----','----','----','----'],
+        ['----', '----','----','----','----'],
+        ['----', '----','----','----','-----']
+      ],
     }
   }
 
   async componentDidMount(){
-    await fetch('https://fourdresult.herokuapp.com/damacai',{
+    await fetch('https://fourdresult.herokuapp.com/nine97',{
        method : 'GET',
      })
      .then((response) => response.json())
      .then((response) => {
-       const first = response.magnum
-       this.setState({ tableData1: first })
-       const second = response.special
-       this.setState({ tableData2: second })
-       const third = response.consolation
-       this.setState({ tableData3: third })
-       const date = response.date
-       this.setState({date: date})
-       const draw = response.draw
-       this.setState({draw: draw})
-       
+      const first = response.First
+      this.setState({ tableData1: first })
+      const date = response.Date[0]
+      this.setState({date: date})
+      const month = response.Date[1]
+      this.setState({month: month})
+      const year = response.Date[2]
+      this.setState({year: year})
        
    })
    
    }
+
   render() {
     const state = this.state;
     return (
-      <Container style={{backgroundColor:'red'}}>
+      <Container style={{backgroundColor:'#52890b'}}>
         <Content>
           <View>
             <Card style={{backgroundColor:'#000',height:100,paddingTop:10}}>
             <View style={{flexDirection:'row',paddingHorizontal:10}}>
-            <Left style={{flexDirection:'row'}}><Text style={{color:'#fff'}}>{this.state.draw}</Text></Left>
-            <Body><Text style={{color:'#fff'}}>Damacai</Text></Body>  
-            <Right><Image source={require('../assets/logo2.jpg')}style={{width:40,height:40}}
+            <Left></Left>
+            <Body><Text style={{color:'#fff'}}>99 7PM</Text></Body>  
+            <Right><Image source={require('../assets/993.png')}style={{width:40,height:40}}
         /></Right>
             </View>
             <View style={{paddingVertical:10,flexDirection:'row'}}>
-            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',fontSize:18,marginLeft:5}}>{this.state.date}</Text></Left>
+            <Left style={{flexDirection:'row',paddingLeft:10}}><Icon name='calendar'style={{color:'#fff',fontSize:20}}/><Text style={{color:'#fff',fontSize:18,marginLeft:5}}>{this.state.date}/{this.state.month}/{this.state.year}</Text></Left>
             <Body></Body>
             <Right style={{flexDirection:'row',justifyContent:'flex-end',paddingRight:10}}><Icon name='megaphone'style={{color:'#fff',fontSize:20}}/><Icon name='refresh'style={{color:'#fff',fontSize:20,marginLeft:10}}/></Right>
               
