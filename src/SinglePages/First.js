@@ -17,16 +17,8 @@ export default class First extends Component{
       tableHead2: ['Special'],
       tableHead3: ['Consolidation'],
       tableData1: [],
-      tableData2: [
-        ['----', '-----','----','----','----'],
-        ['----', '----','----','----','----'],
-        ['----', '----','----','----','-----']
-      ],
-      tableData3: [
-        ['----', '-----','----','----','----'],
-        ['----', '----','----','----','----'],
-        ['----', '----','----','----','-----']
-      ],
+      tableData2: [],
+      tableData3: [],
     }
   }
 
@@ -38,6 +30,10 @@ export default class First extends Component{
      .then((response) => {
       const first = response.First
       this.setState({ tableData1: first })
+      const second = response.Special
+      this.setState({ tableData2: second })
+      const third = response.Consolidation
+      this.setState({ tableData3: third })
       const date = response.Date[0]
       this.setState({date: date})
       const month = response.Date[1]

@@ -21,7 +21,7 @@ export default class Fourth extends Component{
   }
 
   async componentDidMount(){
-    await fetch('https://fourdresult.herokuapp.com/singapore4d',{
+    await fetch('https://fourdresult.herokuapp.com/damacai',{
        method : 'GET',
      })
      .then((response) => response.json())
@@ -44,14 +44,14 @@ export default class Fourth extends Component{
   render() {
     const state = this.state;
     return (
-      <Container style={{backgroundColor:'#4286f4'}}>
+      <Container style={{backgroundColor:'red'}}>
         <Content>
           <View>
             <Card style={{backgroundColor:'#000',height:100,paddingTop:10}}>
             <View style={{flexDirection:'row',paddingHorizontal:10}}>
             <Left style={{flexDirection:'row'}}><Text style={{color:'#fff'}}>{this.state.draw}</Text></Left>
-            <Body><Text style={{color:'#fff'}}>Singpore 4D</Text></Body>  
-            <Right><Image source={require('../assets/logo4.jpg')}style={{width:40,height:40}}
+            <Body><Text style={{color:'#fff'}}>Damacai</Text></Body>  
+            <Right><Image source={require('../assets/damacai.png')}style={{width:40,height:40}}
         /></Right>
             </View>
             <View style={{paddingVertical:10,flexDirection:'row'}}>

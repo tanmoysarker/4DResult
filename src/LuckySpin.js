@@ -4,7 +4,35 @@ import { ListItem, CheckBox,Container,Content, Header, Title, Button, Left, Righ
 import { Table, Row, Rows } from 'react-native-table-component';
 
 export default class LuckySpin extends Component{
+  constructor(props) {
+    super(props);
+    this.state={
+      numberHolder1 : 0,
+      numberHolder2 : 0,
+      numberHolder3 : 0,
+      numberHolder4 : 0
+    }
+  }
    
+  generateRandom =()=>{
+    let randomNumber1 =  Math.floor((Math.random()*8) + 1)
+    this.setState({
+      numberHolder1 : randomNumber1
+    })
+    let randomNumber2 =  Math.floor((Math.random()*8) + 1)
+    this.setState({
+      numberHolder2 : randomNumber2
+    })
+    let randomNumber3 =  Math.floor((Math.random()*8) + 1)
+    this.setState({
+      numberHolder3 : randomNumber3
+    })
+    let randomNumber4 =  Math.floor((Math.random()*8) + 1)
+    this.setState({
+      numberHolder4 : randomNumber4
+    })
+  }
+  
   render() {
     return (
         <Container>
@@ -18,16 +46,16 @@ export default class LuckySpin extends Component{
             <Text style={{fontSize:20,fontWeight:'300'}}>4D Number !</Text>
             </View>
             <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-evenly'}}>
-                <View style={styles.viewers}><Text style={styles.text}>3</Text></View>
-                <View style={styles.viewers}><Text style={styles.text}>4</Text></View>
-                <View style={styles.viewers}><Text style={styles.text}>8</Text></View>
-                <View style={styles.viewers}><Text style={styles.text}>7</Text></View>
+                <View style={styles.viewers}><Text style={styles.text}>{this.state.numberHolder1}</Text></View>
+                <View style={styles.viewers}><Text style={styles.text}>{this.state.numberHolder2}</Text></View>
+                <View style={styles.viewers}><Text style={styles.text}>{this.state.numberHolder3}</Text></View>
+                <View style={styles.viewers}><Text style={styles.text}>{this.state.numberHolder4}</Text></View>
             </View>
             <View style={{flexDirection:'row',paddingHorizontal:20,paddingVertical:20}}>
                 <Left><Button style={{backgroundColor:'#f4392c',borderRadius:4,width:140,height:50,alignItems:'center',justifyContent:'center'}}><Text style={styles.text2}>Number History</Text></Button></Left>
-                <Right><Button style={{backgroundColor:'#2165a5',borderRadius:4,width:140,height:50,alignItems:'center',justifyContent:'center'}}><Text style={styles.text2}>Spin My Luck !</Text></Button></Right>    
+                <Right><Button style={{backgroundColor:'#2165a5',borderRadius:4,width:140,height:50,alignItems:'center',justifyContent:'center'}} onPress={()=>this.generateRandom()}><Text style={styles.text2}>Spin My Luck !</Text></Button></Right>    
             </View>
-            <View style={{paddingVertical:20,alignItems:'center'}}>
+            {/* <View style={{paddingVertical:20,alignItems:'center'}}>
                 <Text style={{fontSize:20,fontWeight:'300'}}>Jackpot Number</Text>
             </View>
             <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-evenly'}}>
@@ -47,7 +75,7 @@ export default class LuckySpin extends Component{
             </View>
             <View style={{paddingVertical:30,alignSelf:'center'}}>
                 <Button style={{backgroundColor:'#2165a5',width:140,height:50,borderRadius:4,alignItems:'center',justifyContent:'center'}}><Text style={styles.text2}>Spin My Luck</Text></Button>
-            </View>
+            </View> */}
             
         </Content>
       </Container>

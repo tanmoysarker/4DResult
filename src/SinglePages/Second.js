@@ -17,15 +17,13 @@ export default class Second extends Component{
       tableHead2: ['Special'],
       tableHead3: ['Consolidation'],
       tableData1: [],
-      tableData2: [
-        ['----', '-----','----','----','----'],
-        ['----', '----','----','----','----'],
-        ['----', '----','----','----','-----']
-      ],
-      tableData3: [
-        ['----', '-----','----','----','----'],
-        ['----', '----','----','----','----'],
-        ['----', '----','----','----','-----']
+      tableData2: [],
+      tableData3: [],
+      tableHead4: ['Bonus Payout'],
+      tableData4: [
+        ['1ST Prize','5000'],
+        ['2ND Prize','2000'],
+        ['3RD Prize','1000']
       ],
     }
   }
@@ -38,6 +36,10 @@ export default class Second extends Component{
      .then((response) => {
       const first = response.First
       this.setState({ tableData1: first })
+      const second = response.Special
+      this.setState({ tableData2: second })
+      const third = response.Consolidation
+      this.setState({ tableData3: third })
       const date = response.Date[0]
       this.setState({date: date})
       const month = response.Date[1]
@@ -73,6 +75,12 @@ export default class Second extends Component{
             <View style={{backgroundColor:'#fff'}}>
             <Table borderStyle={{borderWidth: 2, borderColor: '#000'}}>
           <Rows data={state.tableData1} textStyle={styles.text2}/>
+        </Table>
+        </View>
+        <View style={{backgroundColor:'#fff'}}>
+            <Table borderStyle={{borderWidth: 2, borderColor: '#000'}}>
+            <Row data={state.tableHead4} style={styles.head} textStyle={styles.text}/>
+          <Rows data={state.tableData4} textStyle={styles.text2}/>
         </Table>
         </View>
         <View style={{backgroundColor:'#fff'}}>

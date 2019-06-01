@@ -58,34 +58,34 @@ export class FiveD6D extends Component {
 
       })
 
-      await fetch('https://fourdresult.herokuapp.com/singapore4d', {
-      method: 'GET',
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        let first = response.magnum[0]
-        let firstTo = first.slice(1)
-        this.setState({ tableData5: firstTo })
-        let second = response.magnum[1]
-        let secondTo = second.slice(1)
-        this.setState({ tableData6: secondTo })
-        let third = response.magnum[2]
-        let thirdTo = third.slice(1)
-        this.setState({ tableData7: thirdTo })
-        const date = response.date
-        this.setState({ date: date })
-
-        let data1 = response.special[0]
-        let data2 = response.special[1]
-        let data3 = response.special[2]
-        let newData = data1.concat(data2, data3)
-        this.setState({ tableData8: newData })
-
-        let data4 = response.consolation[0]
-        let data5 = response.consolation[1]
-        let newData1 = data4.concat(data5)
-        this.setState({ tableData9: newData1 })
+      await fetch('https://fourdresult.herokuapp.com/cashSweep', {
+        method: 'GET',
       })
+        .then((response) => response.json())
+        .then((response) => {
+          let first = response.magnum[0]
+          let firstTo = first.slice(1)
+          this.setState({ tableData10: firstTo })
+          let second = response.magnum[1]
+          let secondTo = second.slice(1)
+          this.setState({ tableData11: secondTo })
+          let third = response.magnum[2]
+          let thirdTo = third.slice(1)
+          this.setState({ tableData12: thirdTo })
+          const date = response.date
+          this.setState({ date: date })
+  
+          let data1 = response.special[0]
+          let data2 = response.special[1]
+          let data3 = response.special[2]
+          let newData = data1.concat(data2, data3)
+          this.setState({ tableData13: newData })
+  
+          let data4 = response.consolation[0]
+          let data5 = response.consolation[1]
+          let newData1 = data4.concat(data5)
+          this.setState({ tableData14: newData1 })
+        })
   }
   render() {
     const state = this.state;
@@ -161,16 +161,16 @@ export class FiveD6D extends Component {
               </View>
               </View>
 
-            <View>
+              <View>
               <Card style={{ backgroundColor: '#448be2', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
                   <Image source={require('../assets/logo3.png')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>Singapore 4D</Text>
+                  <Text style={styles.textStyle}>Cash Sweep</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>24/05/2019</Text>
+                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>{this.state.date}</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                   <Icon name='megaphone' style={{ color: '#fff', fontSize: 22, marginTop: 15 }} /><Icon name='refresh' style={{ color: '#fff', fontSize: 22, marginLeft: 15, marginTop: 15 }} />
@@ -182,7 +182,7 @@ export class FiveD6D extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="1ST Prize" style={{ width: 110, height: 30, backgroundColor: '#448be2' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData5} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData10} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -192,7 +192,7 @@ export class FiveD6D extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="2ND Prize" style={{ width: 110, height: 30, backgroundColor: '#448be2' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData6} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData11} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -202,7 +202,7 @@ export class FiveD6D extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="3RD Prize" style={{ width: 110, height: 30, backgroundColor: '#448be2' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData7} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData12} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -212,7 +212,7 @@ export class FiveD6D extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="Special" style={{ width: 110, height: 30, backgroundColor: '#448be2' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData8} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData13} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -222,7 +222,7 @@ export class FiveD6D extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data="Consolation" style={{ width: 110, height: 30, backgroundColor: '#448be2' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData9} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData14} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>

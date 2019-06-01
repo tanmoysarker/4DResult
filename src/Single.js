@@ -11,7 +11,6 @@ import Sixth from './SinglePages/Sixth'
 import Seventh from './SinglePages/Seventh'
 import Eighth from './SinglePages/Eighth'
 import Ninth from './SinglePages/Ninth'
-import Tenth from './SinglePages/Tenth'
 
 export default class Single extends Component{
 
@@ -36,37 +35,33 @@ export default class Single extends Component{
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Second />
             </Tab>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/logo3.png')}style={styles.button1}
+            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/magnum.jpg')}style={styles.button1}
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Third />
             </Tab>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/logo4.jpg')}style={styles.button1}
+            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/damacai.png')}style={styles.button1}
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Fourth />
             </Tab>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/logo1.jpg')}style={styles.button1}
+            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/toto.png')}style={styles.button1}
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Fifth />
             </Tab>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/logo2.jpg')}style={styles.button1}
+            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/singapore.png')}style={styles.button1}
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Sixth />
             </Tab>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/logo3.png')}style={styles.button1}
+            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/sabah88.jpg')}style={styles.button1}
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Seventh />
             </Tab>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/logo4.jpg')}style={styles.button1}
+            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/stc.jpg')}style={styles.button1}
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Eighth />
             </Tab>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/logo1.jpg')}style={styles.button1}
+            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/cashsweep.png')}style={styles.button1}
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Ninth />
-            </Tab>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/logo4.jpg')}style={styles.button1}
-          /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
-              <Tenth />
             </Tab>
           </Tabs>
           

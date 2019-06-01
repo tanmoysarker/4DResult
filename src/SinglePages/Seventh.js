@@ -21,7 +21,7 @@ export default class Seventh extends Component{
   }
 
   async componentDidMount(){
-    await fetch('https://fourdresult.herokuapp.com/cashSweep',{
+    await fetch('https://fourdresult.herokuapp.com/sabah88',{
        method : 'GET',
      })
      .then((response) => response.json())
@@ -41,17 +41,18 @@ export default class Seventh extends Component{
    })
    
    }
+
   render() {
     const state = this.state;
     return (
-      <Container style={{backgroundColor:'green'}}>
+      <Container style={{backgroundColor:'red'}}>
         <Content>
           <View>
             <Card style={{backgroundColor:'#000',height:100,paddingTop:10}}>
             <View style={{flexDirection:'row',paddingHorizontal:10}}>
             <Left style={{flexDirection:'row'}}><Text style={{color:'#fff'}}>{this.state.draw}</Text></Left>
-            <Body><Text style={{color:'#fff'}}>Cash Sweep</Text></Body>  
-            <Right><Image source={require('../assets/logo3.png')}style={{width:40,height:40}}
+            <Body><Text style={{color:'#fff'}}>Sabah 88</Text></Body>  
+            <Right><Image source={require('../assets/sabah88.jpg')}style={{width:40,height:40}}
         /></Right>
             </View>
             <View style={{paddingVertical:10,flexDirection:'row'}}>
