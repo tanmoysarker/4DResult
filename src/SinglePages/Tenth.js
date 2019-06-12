@@ -30,7 +30,7 @@ export default class Tenth extends Component{
   render() {
     const state = this.state;
     return (
-      <Container style={{backgroundColor:'#67c8e0'}}>
+      <Container style={{backgroundColor:'#808080'}}>
         <Content>
           <View>
             <Card style={{backgroundColor:'#000',height:100,paddingTop:10}}>

@@ -16,6 +16,7 @@ import Multiple from './src/Multiple'
 import Settings from './src/Settings'
 import Toolbox1 from './src/Toolbox1'
 import LuckySpin from './src/LuckySpin'
+import Splash from './src/Splash'
 
 
 class customDrawerContentComponent extends Component {
@@ -112,6 +113,7 @@ const DashboardDrawerNavigator = createBottomTabNavigator({
   });
 
 const DashboardStackNavigator = createStackNavigator({
+  Splash: Splash,
   DashboardTabNavigator: {
     screen: DashboardDrawerNavigator,
     navigationOptions: () => ({

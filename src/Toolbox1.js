@@ -2,47 +2,59 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View,Image,TouchableOpacity} from 'react-native';
 import { ListItem, CheckBox,Container,Content, Header, Title, Button, Left, Right, Body, Icon,Card,Footer, FooterTab,Badge } from 'native-base';
 import { Table, Row, Rows } from 'react-native-table-component';
-
-export default class Toolbox1 extends Component{
+import { withNavigation } from "react-navigation";
+import AsyncStorage from '@react-native-community/async-storage';
+class Toolbox1 extends Component{
    
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggle: false
+    }
+  }
+  componentWillMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      // The screen is focused
+       this.changeLang()
+    });
+  }
+   async changeLang () {
+    try {
+      const value = await AsyncStorage.getItem('toggle')
+       this.setState({ toggle: JSON.parse(value) })
+    } catch(e) {
+      // error reading value
+    }
+  }
+  
   render() {
     return (
         <Container>
         <Header>
             <Body style={{marginLeft:20}}>
-              <Title>Toolbox</Title>
+              <Title>{this.state.toggle ? "工具箱" : "Toolbox"}</Title>
             </Body>
           </Header>
         <Content>
           <ListItem onPress={()=> this.props.navigation.navigate('Toolbox')}>
           <Icon name='stats' style={{color:'blue'}}/>
             <Body>
-              <Text style={styles.text}>4D Number Stats & Detail</Text>
+              <Text style={styles.text}>{this.state.toggle ? "4D 数字统计和细节" : "4D Number Stats & Detail"}</Text>
             </Body>
           </ListItem>
           <ListItem onPress={()=> this.props.navigation.navigate('LuckySpin')}>
           <Icon name='planet' style={{color:'blue'}}/>
             <Body>
-              <Text style={styles.text}>Spin My Luck</Text>
+              <Text style={styles.text}>{this.state.toggle ? "旋转我的运气" : "Spin My Luck"}</Text>
             </Body>
           </ListItem>
-          {/* <ListItem>
-          <Icon name='ios-list' style={{color:'blue'}}/>
-            <Body>
-              <Text style={styles.text}>My Numbers</Text>
-            </Body>
-          </ListItem>
-          <ListItem>
-          <Icon name='flame' style={{color:'red'}}/>
-            <Body>
-              <Text style={styles.text}>Hot 4D Numbers</Text>
-            </Body>
-          </ListItem> */}
         </Content>
       </Container>
     );
   }
 }
+export default withNavigation(Toolbox1)
 
 const styles = StyleSheet.create({
   viewers: {

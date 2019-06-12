@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Tab, Tabs, Container, Content, Header, Title, Button, Left, Right, Body, Icon, Card, Footer, FooterTab, Badge, TabHeading } from 'native-base';
-import { View, Image, StyleSheet, AsyncStorage, Text,ScrollView } from 'react-native';
+import { DatePicker,Tab, Tabs, Container, Content, Header, Title, Button, Left, Right, Body, Icon, Card, Footer, FooterTab, Badge, TabHeading } from 'native-base';
+import { View, Image, StyleSheet,Text,ScrollView } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-
+import AsyncStorage from '@react-native-community/async-storage';
+import { withNavigation } from "react-navigation";
 
 export class S extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ export class S extends Component {
       tableData12: [],
       tableData13: [],
       tableData14: [],
-
+      toggle: false
     }
   }
 
@@ -124,6 +125,22 @@ export class S extends Component {
           this.setState({ tableData3: newData1 })
         })
   }
+  componentWillMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      // The screen is focused
+       this.changeLang()
+    });
+  }
+   async changeLang () {
+    try {
+      const value = await AsyncStorage.getItem('toggle')
+       this.setState({ toggle: JSON.parse(value) })
+    } catch(e) {
+      // error reading value
+    }
+  }
+
   render() {
     const state = this.state;
     return (
@@ -131,25 +148,40 @@ export class S extends Component {
           <View style={{ paddingTop: 10, paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-evenly' }}>
 
               <View>
-              <Card style={{ backgroundColor: '#ed1515', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
+              <Card style={{ backgroundColor: '#CFD7DC', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
                   <Image source={require('../assets/sabah88.jpg')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>Sabah 88</Text>
+                  <Text style={styles.textStyle}>{this.state.toggle ?"沙巴萬字"  : "Sabah 88"}</Text>
+                </View>
+                <View style={{ flexDirection: 'row',paddingLeft:6  }}>
+                  <Icon name='calendar' style={{ color: '#000', paddingTop: 10, fontSize: 18 }} />
+                  <DatePicker
+                    defaultDate={this.state.date}
+                    minimumDate={new Date(2018, 1, 1)}
+                    maximumDate={new Date(2018, 12, 31)}
+                    locale={"en"}
+                    timeZoneOffsetInMinutes={undefined}
+                    modalTransparent={false}
+                    animationType={"fade"}
+                    androidMode={"default"}
+                    placeHolderText={this.state.date}
+                    textStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
+                    placeHolderTextStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
+                    onDateChange={this.setDate}
+                    disabled={false}
+                  />
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>{this.state.date}</Text>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                  <Icon name='megaphone' style={{ color: '#fff', fontSize: 22, marginTop: 15 }} /><Icon name='refresh' style={{ color: '#fff', fontSize: 22, marginLeft: 15, marginTop: 15 }} />
+                  <Icon name='refresh' style={{ color: '#000', fontSize: 24, marginTop: 15 }} />
                 </View>
               </Card>
               
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="1ST Prize" style={{ width: 110, height: 30, backgroundColor: '#ed1515' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData5} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -159,7 +191,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="2ND Prize" style={{ width: 110, height: 30, backgroundColor: '#ed1515' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData6} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -169,7 +201,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="3RD Prize" style={{ width: 110, height: 30, backgroundColor: '#ed1515' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData7} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -179,7 +211,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="Special" style={{ width: 110, height: 30, backgroundColor: '#ed1515' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData8} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -189,7 +221,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="Consolation" style={{ width: 110, height: 30, backgroundColor: '#ed1515' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData9} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -201,25 +233,40 @@ export class S extends Component {
 
 
               <View>
-              <Card style={{ backgroundColor: '#a2b738', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
+              <Card style={{ backgroundColor: '#CFD7DC', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
                   <Image source={require('../assets/stc.jpg')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>STC 4D</Text>
+                  <Text style={styles.textStyle}>{this.state.toggle ?"山打根赛马会"  : "STC 4D"}</Text>
+                </View>
+                <View style={{ flexDirection: 'row',paddingLeft:6  }}>
+                  <Icon name='calendar' style={{ color: '#000', paddingTop: 10, fontSize: 18 }} />
+                  <DatePicker
+                    defaultDate={this.state.date}
+                    minimumDate={new Date(2018, 1, 1)}
+                    maximumDate={new Date(2018, 12, 31)}
+                    locale={"en"}
+                    timeZoneOffsetInMinutes={undefined}
+                    modalTransparent={false}
+                    animationType={"fade"}
+                    androidMode={"default"}
+                    placeHolderText={this.state.date}
+                    textStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
+                    placeHolderTextStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
+                    onDateChange={this.setDate}
+                    disabled={false}
+                  />
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>{this.state.date}</Text>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                  <Icon name='megaphone' style={{ color: '#fff', fontSize: 22, marginTop: 15 }} /><Icon name='refresh' style={{ color: '#fff', fontSize: 22, marginLeft: 15, marginTop: 15 }} />
+                  <Icon name='refresh' style={{ color: '#000', fontSize: 24, marginTop: 15 }} />
                 </View>
               </Card>
 
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="1ST Prize" style={{ width: 110, height: 30, backgroundColor: '#a2b738' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData10} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -229,7 +276,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="2ND Prize" style={{ width: 110, height: 30, backgroundColor: '#a2b738' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData11} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -239,7 +286,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="3RD Prize" style={{ width: 110, height: 30, backgroundColor: '#a2b738' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData12} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -249,7 +296,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="Special" style={{ width: 110, height: 30, backgroundColor: '#a2b738' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData13} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -259,7 +306,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="Consolation" style={{ width: 110, height: 30, backgroundColor: '#a2b738' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData14} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -269,25 +316,40 @@ export class S extends Component {
               </View>
 
               <View>
-              <Card style={{ backgroundColor: '#448be2', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
+              <Card style={{ backgroundColor: '#CFD7DC', height: 200, width: 110, paddingTop: 10, alignItems: 'center' }}>
                 <View >
                   <Image source={require('../assets/cashsweep.png')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>Cash Sweep</Text>
+                  <Text style={styles.textStyle}>{this.state.toggle ?"砂勞越大萬"  : "Cash Sweep"}</Text>
+                </View>
+                <View style={{ flexDirection: 'row',paddingLeft:6  }}>
+                  <Icon name='calendar' style={{ color: '#000', paddingTop: 10, fontSize: 18 }} />
+                  <DatePicker
+                    defaultDate={this.state.date}
+                    minimumDate={new Date(2018, 1, 1)}
+                    maximumDate={new Date(2018, 12, 31)}
+                    locale={"en"}
+                    timeZoneOffsetInMinutes={undefined}
+                    modalTransparent={false}
+                    animationType={"fade"}
+                    androidMode={"default"}
+                    placeHolderText={this.state.date}
+                    textStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
+                    placeHolderTextStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
+                    onDateChange={this.setDate}
+                    disabled={false}
+                  />
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                  <Icon name='calendar' style={{ color: '#fff', marginRight: 5, paddingTop: 10, fontSize: 18 }} /><Text style={styles.textStyle}>{this.state.date}</Text>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                  <Icon name='megaphone' style={{ color: '#fff', fontSize: 22, marginTop: 15 }} /><Icon name='refresh' style={{ color: '#fff', fontSize: 22, marginLeft: 15, marginTop: 15 }} />
+                  <Icon name='refresh' style={{ color: '#000', fontSize: 24, marginTop: 15 }} />
                 </View>
               </Card>
 
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="1ST Prize" style={{ width: 110, height: 30, backgroundColor: '#448be2' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -297,7 +359,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="2ND Prize" style={{ width: 110, height: 30, backgroundColor: '#448be2' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData1} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -307,7 +369,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="3RD Prize" style={{ width: 110, height: 30, backgroundColor: '#448be2' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData2} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -317,7 +379,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="Special" style={{ width: 110, height: 30, backgroundColor: '#448be2' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData4} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -327,7 +389,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data="Consolation" style={{ width: 110, height: 30, backgroundColor: '#448be2' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center' }} />
+                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData3} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -340,24 +402,27 @@ export class S extends Component {
             
           </View>
           <View style={{ paddingVertical: 20 }}>
-            <Button style={{ height: 50, width: '100%', backgroundColor: '#ed1515', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 18, color: '#fff' }}>Share</Text></Button>
+            <Button style={{ height: 50, width: '100%', backgroundColor: '#CFD7DC', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 20, color: '#000',fontWeight:'bold' }}>{this.state.toggle ? "分享" : "Share"}</Text></Button>
           </View>
       </View>
     )
   }
 }
 
-export default S 
+export default withNavigation(S)
 
 const styles = StyleSheet.create({
   container: {  backgroundColor: '#fff' },
   head: { height: 40, backgroundColor: '#f1f8ff' },
-  text: { margin: 6, alignSelf: 'center' },
+  text: { margin: 6, alignSelf: 'center',fontSize:18,color: '#000',fontWeight:'bold' },
   imageStyle: {
     width: 40, height: 40
   },
   textStyle: {
-    color: '#fff', paddingTop: 10
+    color: '#000', paddingTop: 10,fontSize:18,fontWeight:'bold'
+  },
+  textStyle2: {
+    color: '#000', paddingTop: 10,fontSize:16,fontWeight:'bold'
   },
   button1: {
     alignItems: 'center',

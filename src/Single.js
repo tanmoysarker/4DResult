@@ -18,7 +18,7 @@ export default class Single extends Component{
   render() {
     const state = this.state;
     return (
-      <Container style={{backgroundColor:'#f4dc41'}}>
+      <Container style={{backgroundColor:'#000'}}>
         <Content>
         <Header>
             <Body style={{marginLeft:20}}>
@@ -47,7 +47,7 @@ export default class Single extends Component{
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Fifth />
             </Tab>
-            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/singapore.png')}style={styles.button1}
+            <Tab heading={<TabHeading style={{backgroundColor:'#fff'}}><Image source={require('./assets/singapore.jpeg')}style={styles.button1}
           /></TabHeading>} tabStyle={{ backgroundColor: '#fff' }} textStyle={{ color: '#000' }} activeTabStyle={{ backgroundColor: '#fff' }} activeTextStyle={{ color: 'blue', fontWeight: 'normal' }}>
               <Sixth />
             </Tab>
