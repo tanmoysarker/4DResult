@@ -58,13 +58,13 @@ export class MPT extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
-        let first = response.First[0]
+        let first = response.First2[0]
         let firstTo = first.slice(1)
         this.setState({ tableData: firstTo })
-        let second = response.First[1]
+        let second = response.First2[1]
         let secondTo = second.slice(1)
         this.setState({ tableData1: secondTo })
-        let third = response.First[2]
+        let third = response.First2[2]
         let thirdTo = third.slice(1)
         this.setState({ tableData2: thirdTo })
         const date1 = response.Date[0]
@@ -91,13 +91,13 @@ export class MPT extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
-        let first = response.First[0]
+        let first = response.First2[0]
         let firstTo = first.slice(1)
         this.setState({ tableData5: firstTo })
-        let second = response.First[1]
+        let second = response.First2[1]
         let secondTo = second.slice(1)
         this.setState({ tableData6: secondTo })
-        let third = response.First[2]
+        let third = response.First2[2]
         let thirdTo = third.slice(1)
         this.setState({ tableData7: thirdTo })
         const date2 = response.Date[0]

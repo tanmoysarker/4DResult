@@ -17,6 +17,7 @@ import Settings from './src/Settings'
 import Toolbox1 from './src/Toolbox1'
 import LuckySpin from './src/LuckySpin'
 import Splash from './src/Splash'
+import AuthLoadingScreen from './AuthLoadingScreen'
 
 
 class customDrawerContentComponent extends Component {
@@ -51,15 +52,6 @@ const DashboardDrawerNavigator = createBottomTabNavigator({
       )
     }
   },
-  // Notifications: {
-  //   screen: Notifications,
-  //   navigationOptions: {
-  //     tabBarLabel: 'Notifications',
-  //     tabBarIcon:({tintColor})=> (
-  //       <Icon name='notifications' color={tintColor} size={25}/>
-  //     )
-  //   }
-  // },
   Toolbox1: {
     screen: Toolbox1,
     navigationOptions: {
@@ -136,6 +128,7 @@ const DashboardStackNavigator = createStackNavigator({
 
 
 const AppSwitchNavigator = createSwitchNavigator({
+  AuthLoadingScreen: AuthLoadingScreen,
   App: {
     screen: DashboardStackNavigator
   }

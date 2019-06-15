@@ -42,13 +42,13 @@ export class S extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
-        let first = response.magnum[0]
+        let first = response.magnum2[0]
         let firstTo = first.slice(1)
         this.setState({ tableData5: firstTo })
-        let second = response.magnum[1]
+        let second = response.magnum2[1]
         let secondTo = second.slice(1)
         this.setState({ tableData6: secondTo })
-        let third = response.magnum[2]
+        let third = response.magnum2[2]
         let thirdTo = third.slice(1)
         this.setState({ tableData7: thirdTo })
         const date = response.date
@@ -70,13 +70,13 @@ export class S extends Component {
         })
           .then((response) => response.json())
           .then((response) => {
-            let first = response.magnum[0]
+            let first = response.magnum2[0]
             let firstTo = first.slice(1)
             this.setState({ tableData10: firstTo })
-            let second = response.magnum[1]
+            let second = response.magnum2[1]
             let secondTo = second.slice(1)
             this.setState({ tableData11: secondTo })
-            let third = response.magnum[2]
+            let third = response.magnum2[2]
             let thirdTo = third.slice(1)
             this.setState({ tableData12: thirdTo })
             const date = response.date
@@ -101,13 +101,13 @@ export class S extends Component {
       })
         .then((response) => response.json())
         .then((response) => {
-          let first = response.magnum[0]
+          let first = response.magnum2[0]
           let firstTo = first.slice(1)
           this.setState({ tableData: firstTo })
-          let second = response.magnum[1]
+          let second = response.magnum2[1]
           let secondTo = second.slice(1)
           this.setState({ tableData1: secondTo })
-          let third = response.magnum[2]
+          let third = response.magnum2[2]
           let thirdTo = third.slice(1)
           this.setState({ tableData2: thirdTo })
           const date = response.date

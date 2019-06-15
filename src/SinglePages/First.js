@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Container, Content, Header, Title, Button, Left, Right, Body, Icon, Card, Footer, FooterTab, Badge, DatePicker } from 'native-base';
-import { Table, Row, Rows } from 'react-native-table-component';
+import { Table, Row, Rows, Col, Cols, TableWrapper  } from 'react-native-table-component';
 import { withNavigation } from "react-navigation";
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -24,7 +24,8 @@ class First extends Component {
       tableData2: [],
       tableData3: [],
       chosenDate: new Date(),
-      toggle: false
+      toggle: false,
+      tableTitle: ['1st', '2nd', '3rd']
     }
   }
 
@@ -62,14 +63,14 @@ class First extends Component {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
       // The screen is focused
-       this.changeLang()
+      this.changeLang()
     });
   }
-   async changeLang () {
+  async changeLang() {
     try {
       const value = await AsyncStorage.getItem('toggle')
-       this.setState({ toggle: JSON.parse(value) })
-    } catch(e) {
+      this.setState({ toggle: JSON.parse(value) })
+    } catch (e) {
       // error reading value
     }
   }
@@ -92,7 +93,7 @@ class First extends Component {
             <Card style={{ backgroundColor: '#f6eb13', height: 100, paddingTop: 10 }}>
               <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
                 <Left></Left>
-                <Body><Text style={{ color: '#000', fontSize: 20, fontWeight: "bold" }}>{this.state.toggle ?"99下午3点"  : "99 3PM"}</Text></Body>
+                <Body><Text style={{ color: '#000', fontSize: 20, fontWeight: "bold" }}>{this.state.toggle ? "99下午3点" : "99 3PM"}</Text></Body>
                 <Right><Image source={require('../assets/993.png')} style={{ width: 40, height: 40 }}
                 /></Right>
               </View>
@@ -122,19 +123,28 @@ class First extends Component {
             </Card>
           </View>
           <View style={{ backgroundColor: '#fff' }}>
-            <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-              <Rows data={state.tableData1} textStyle={styles.text2} />
+
+            <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
+              {/* Left Wrapper */}
+              <TableWrapper style={{ width: '60%' }}>
+                <Col data={state.tableTitle} style={styles.head2} textStyle={styles.text2}></Col>
+              </TableWrapper>
+
+              {/* Right Wrapper */}
+              <TableWrapper style={{ flex: 1 }}>
+                <Cols data={state.tableData1} textStyle={styles.text2} />
+              </TableWrapper>
             </Table>
           </View>
           <View style={{ backgroundColor: '#fff' }}>
             <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-              <Row data= {this.state.toggle ? (this.state.tableHead4) : (this.state.tableHead2)}style={styles.head} textStyle={styles.text} />
+              <Row data={this.state.toggle ? (this.state.tableHead4) : (this.state.tableHead2)} style={styles.head} textStyle={styles.text} />
               <Rows data={state.tableData2} textStyle={styles.text2} />
             </Table>
           </View>
           <View style={{ backgroundColor: '#fff' }}>
             <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-              <Row data= {this.state.toggle ? (this.state.tableHead5) : (this.state.tableHead3)}style={styles.head} textStyle={styles.text} />
+              <Row data={this.state.toggle ? (this.state.tableHead5) : (this.state.tableHead3)} style={styles.head} textStyle={styles.text} />
               <Rows data={state.tableData3} textStyle={styles.text2} />
             </Table>
           </View>
@@ -165,5 +175,5 @@ const styles = StyleSheet.create({
   text: { margin: 6, color: '#000', alignSelf: 'center', fontSize: 18, fontWeight: "bold" },
   text2: { alignSelf: 'center', color: '#000', fontSize: 18, fontWeight: 'bold' },
   head: { height: 40, backgroundColor: '#f6eb13' },
-
+  head2: { backgroundColor: '#f6eb13' }
 });

@@ -11,9 +11,33 @@ import Sixth from './SinglePages/Sixth'
 import Seventh from './SinglePages/Seventh'
 import Eighth from './SinglePages/Eighth'
 import Ninth from './SinglePages/Ninth'
+import AsyncStorage from '@react-native-community/async-storage';
+import { withNavigation } from "react-navigation";
 
-export default class Single extends Component{
+class Single extends Component{
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggle: false
+    }
+  }
+
+  componentWillMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      // The screen is focused
+       this.changeLang()
+    });
+  }
+   async changeLang () {
+    try {
+      const value = await AsyncStorage.getItem('toggle')
+       this.setState({ toggle: JSON.parse(value) })
+    } catch(e) {
+      // error reading value
+    }
+  }
  
   render() {
     const state = this.state;
@@ -22,7 +46,7 @@ export default class Single extends Component{
         <Content>
         <Header>
             <Body style={{marginLeft:20}}>
-              <Title>Single</Title>
+              <Title>{this.state.toggle ? "单" : "Single"}</Title>
             </Body>
           </Header>
           
@@ -70,6 +94,8 @@ export default class Single extends Component{
     );
   }
 }
+
+export default withNavigation(Single)
 
 const styles = StyleSheet.create({
   viewers: {

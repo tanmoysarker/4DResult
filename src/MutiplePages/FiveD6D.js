@@ -28,13 +28,13 @@ export class FiveD6D extends Component {
         })
           .then((response) => response.json())
           .then((response) => {
-            let first = response.magnum[0]
+            let first = response.magnum2[0]
             let firstTo = first.slice(1)
             this.setState({ tableData10: firstTo })
-            let second = response.magnum[1]
+            let second = response.magnum2[1]
             let secondTo = second.slice(1)
             this.setState({ tableData11: secondTo })
-            let third = response.magnum[2]
+            let third = response.magnum2[2]
             let thirdTo = third.slice(1)
             this.setState({ tableData12: thirdTo })
             const date = response.date

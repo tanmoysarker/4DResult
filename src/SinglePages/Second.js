@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { DatePicker, Container, Content, Header, Title, Button, Left, Right, Body, Icon, Card, Footer, FooterTab, Badge } from 'native-base';
-import { Table, Row, Rows } from 'react-native-table-component';
+import { Table, Row, Rows, Col, Cols, TableWrapper  } from 'react-native-table-component';
 import AsyncStorage from '@react-native-community/async-storage';
 import { withNavigation } from "react-navigation";
 class Second extends Component {
@@ -39,7 +39,8 @@ class Second extends Component {
         ['安慰獎', '']
       ],
       chosenDate: new Date(),
-      toggle: false
+      toggle: false,
+      tableTitle: ['1st', '2nd', '3rd']
     }
   }
 
@@ -50,6 +51,7 @@ class Second extends Component {
       .then((response) => response.json())
       .then((response) => {
         const first = response.First
+        console.log(first)
         this.setState({ tableData1: first })
         const second = response.Special
         this.setState({ tableData2: second })
@@ -77,14 +79,14 @@ class Second extends Component {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
       // The screen is focused
-       this.changeLang()
+      this.changeLang()
     });
   }
-   async changeLang () {
+  async changeLang() {
     try {
       const value = await AsyncStorage.getItem('toggle')
-       this.setState({ toggle: JSON.parse(value) })
-    } catch(e) {
+      this.setState({ toggle: JSON.parse(value) })
+    } catch (e) {
       // error reading value
     }
   }
@@ -96,11 +98,11 @@ class Second extends Component {
           <Card style={{ backgroundColor: '#ED1E24', height: 100, paddingTop: 10 }}>
             <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
               <Left></Left>
-              <Body><Text style={{ color: '#fff', fontSize: 20, fontWeight: "bold" }}>{this.state.toggle ?"99点7分"  : "99 7PM"}</Text></Body>
+              <Body><Text style={{ color: '#fff', fontSize: 20, fontWeight: "bold" }}>{this.state.toggle ? "99点7分" : "99 7PM"}</Text></Body>
               <Right><Image source={require('../assets/993.png')} style={{ width: 40, height: 40 }}
               /></Right>
             </View>
-            <View style={{justifyContent: 'space-evenly', flexDirection: 'row' }}>
+            <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
               <Left style={{ flexDirection: 'row', paddingLeft: 10 }}>
                 <Icon name='calendar' style={{ color: '#fff', fontSize: 20, paddingTop: 10 }} />
                 <DatePicker
@@ -126,26 +128,34 @@ class Second extends Component {
           </Card>
         </View>
         <View style={{ backgroundColor: '#fff' }}>
-          <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-            <Rows data={state.tableData1} textStyle={styles.text2} />
+          <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
+            {/* Left Wrapper */}
+            <TableWrapper style={{ width: '60%' }}>
+              <Col data={state.tableTitle} style={styles.head2} textStyle={styles.text3}></Col>
+            </TableWrapper>
+
+            {/* Right Wrapper */}
+            <TableWrapper style={{ flex: 1 }}>
+              <Cols data={state.tableData1} textStyle={styles.text2} />
+            </TableWrapper>
           </Table>
         </View>
 
         <View style={{ backgroundColor: '#fff' }}>
           <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-            <Row data= {this.state.toggle ? (this.state.tableHead6) : (this.state.tableHead2)}style={styles.head} textStyle={styles.text} />
+            <Row data={this.state.toggle ? (this.state.tableHead6) : (this.state.tableHead2)} style={styles.head} textStyle={styles.text} />
             <Rows data={state.tableData2} textStyle={styles.text2} />
           </Table>
         </View>
         <View style={{ backgroundColor: '#fff' }}>
           <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-            <Row data= {this.state.toggle ? (this.state.tableHead5) : (this.state.tableHead3)} style={styles.head} textStyle={styles.text} />
+            <Row data={this.state.toggle ? (this.state.tableHead5) : (this.state.tableHead3)} style={styles.head} textStyle={styles.text} />
             <Rows data={state.tableData3} textStyle={styles.text2} />
           </Table>
         </View>
         <View style={{ backgroundColor: '#fff' }}>
           <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-            <Row data={this.state.toggle ? (this.state.tableHead7) : (this.state.tableHead4)}style={styles.head} textStyle={styles.text} />
+            <Row data={this.state.toggle ? (this.state.tableHead7) : (this.state.tableHead4)} style={styles.head} textStyle={styles.text} />
             <Rows data={this.state.toggle ? (this.state.tableData5) : (this.state.tableData4)} textStyle={styles.text2} />
           </Table>
         </View>
@@ -175,6 +185,7 @@ const styles = StyleSheet.create({
   },
   text: { margin: 6, color: '#fff', alignSelf: 'center', fontSize: 18, fontWeight: "bold" },
   text2: { alignSelf: 'center', color: '#000', fontSize: 18, fontWeight: 'bold' },
+  text3: { alignSelf: 'center', color: '#fff', fontSize: 18, fontWeight: 'bold' },
   head: { height: 40, backgroundColor: '#ED1E24' },
-
+  head2: { backgroundColor: '#ED1E24' }
 });
