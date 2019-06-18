@@ -235,7 +235,7 @@ export class MPT extends Component {
                   <Image source={require('../assets/993.png')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={{color: '#fff', paddingTop: 10,fontSize:18,fontWeight:'bold'}}>{this.state.toggle ?"99点7分"  : "99 7PM"}</Text>
+                  <Text style={{color: '#fff', paddingTop: 10,fontSize:18,fontWeight:'bold'}}>{this.state.toggle ?"99下午7点"  : "99 7PM"}</Text>
                 </View>
                 <View style={{ flexDirection: 'row',paddingLeft:6 }}>
                   <Icon name='calendar' style={{ color: '#fff', paddingTop: 10, fontSize: 18 }} />

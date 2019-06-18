@@ -12,8 +12,7 @@ class Second extends Component {
       second: '',
       third: '',
       date: '',
-      month: '',
-      year: '',
+      date1:'',
       draw: '',
       tableHead2: ['Special'],
       tableHead6: ['特別獎'],
@@ -57,23 +56,15 @@ class Second extends Component {
         this.setState({ tableData2: second })
         const third = response.Consolidation
         this.setState({ tableData3: third })
-        const date = response.Date[0]
-        this.setState({ date: date })
-        const month = response.Date[1]
-        this.setState({ month: month })
-        const year = response.Date[2]
-        this.setState({ year: year })
-
+        let date = response.Date[0]
+        let month = response.Date[1]
+        let year = response.Date[2]
+        let date1 = date+'/'+month+'/'+year
+        this.setState({date1:date1})
       })
-
   }
   setDate(newDate) {
     this.setState({ chosenDate: newDate });
-  }
-  dateText = () => {
-    return (
-      <Text>{this.state.date}/{this.state.month}/{this.state.year}</Text>
-    )
   }
   componentWillMount() {
     const { navigation } = this.props;
@@ -98,7 +89,7 @@ class Second extends Component {
           <Card style={{ backgroundColor: '#ED1E24', height: 100, paddingTop: 10 }}>
             <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
               <Left></Left>
-              <Body><Text style={{ color: '#fff', fontSize: 20, fontWeight: "bold" }}>{this.state.toggle ? "99点7分" : "99 7PM"}</Text></Body>
+              <Body><Text style={{ color: '#fff', fontSize: 20, fontWeight: "bold" }}>{this.state.toggle ? "99下午7点" : "99 7PM"}</Text></Body>
               <Right><Image source={require('../assets/993.png')} style={{ width: 40, height: 40 }}
               /></Right>
             </View>
@@ -114,7 +105,7 @@ class Second extends Component {
                   modalTransparent={false}
                   animationType={"fade"}
                   androidMode={"default"}
-                  placeHolderText={this.dateText()}
+                  placeHolderText={this.state.date1}
                   textStyle={{ color: "#fff", fontSize: 18, paddingRight: 5 }}
                   placeHolderTextStyle={{ color: "#fff", fontSize: 18, paddingRight: 5 }}
                   onDateChange={this.setDate}

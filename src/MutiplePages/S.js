@@ -14,6 +14,8 @@ export class S extends Component {
       third: '',
       date: '',
       date1:'',
+      date2:'',
+      date3:'',
       month:'',
       year:'',
       tableData: [],
@@ -33,6 +35,9 @@ export class S extends Component {
       tableData14: [],
       toggle: false
     }
+    this.setDate1 = this.setDate1.bind(this)
+    this.setDate2 = this.setDate2.bind(this)
+    this.setDate3 = this.setDate3.bind(this)
   }
 
   async componentDidMount() {
@@ -51,8 +56,8 @@ export class S extends Component {
         let third = response.magnum2[2]
         let thirdTo = third.slice(1)
         this.setState({ tableData7: thirdTo })
-        const date = response.date
-        this.setState({ date: date })
+        const date1 = response.date
+        this.setState({ date1: date1 })
 
         let data1 = response.special[0]
         let data2 = response.special[1]
@@ -79,8 +84,8 @@ export class S extends Component {
             let third = response.magnum2[2]
             let thirdTo = third.slice(1)
             this.setState({ tableData12: thirdTo })
-            const date = response.date
-            this.setState({ date: date })
+            const date2 = response.date
+            this.setState({ date2: date2 })
     
             let data1 = response.special[0]
             let data2 = response.special[1]
@@ -110,8 +115,8 @@ export class S extends Component {
           let third = response.magnum2[2]
           let thirdTo = third.slice(1)
           this.setState({ tableData2: thirdTo })
-          const date = response.date
-          this.setState({ date: date })
+          const date3 = response.date
+          this.setState({ date3: date3 })
   
           let data1 = response.special[0]
           let data2 = response.special[1]
@@ -124,6 +129,119 @@ export class S extends Component {
           let newData1 = data4.concat(data5)
           this.setState({ tableData3: newData1 })
         })
+  }
+  async setDate1(newDate) {
+    let day = newDate.getDate()
+    console.log('date', day)
+    let month = newDate.getMonth() + 1
+    let year = newDate.getFullYear()
+    day = String(day).length > 1 ? day : '0' + day
+    month = String(month).length > 1 ? month : '0' + month
+    let fullDate = 'https://fourdresult.herokuapp.com/sabah882/' + year+'-'+month+'-'+day
+    console.log('date', fullDate)
+    // this.newStates(fullDate);
+    await fetch(fullDate, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        let first = response.magnum2[0]
+        let firstTo = first.slice(1)
+        this.setState({ tableData5: firstTo })
+        let second = response.magnum2[1]
+        let secondTo = second.slice(1)
+        this.setState({ tableData6: secondTo })
+        let third = response.magnum2[2]
+        let thirdTo = third.slice(1)
+        this.setState({ tableData7: thirdTo })
+        const date1 = response.date
+        this.setState({ date1: date1 })
+
+        let data1 = response.special[0]
+        let data2 = response.special[1]
+        let data3 = response.special[2]
+        let newData = data1.concat(data2, data3)
+        this.setState({ tableData8: newData })
+
+        let data4 = response.consolation[0]
+        let data5 = response.consolation[1]
+        let newData1 = data4.concat(data5)
+        this.setState({ tableData9: newData1 })
+      })
+  }
+  async setDate2(newDate) {
+    let day = newDate.getDate()
+    console.log('date', day)
+    let month = newDate.getMonth() + 1
+    let year = newDate.getFullYear()
+    day = String(day).length > 1 ? day : '0' + day
+    month = String(month).length > 1 ? month : '0' + month
+    let fullDate = 'https://fourdresult.herokuapp.com/stc2/' + year+'-'+month+'-'+day
+    console.log('date', fullDate)
+    await fetch(fullDate, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        let first = response.magnum2[0]
+            let firstTo = first.slice(1)
+            this.setState({ tableData10: firstTo })
+            let second = response.magnum2[1]
+            let secondTo = second.slice(1)
+            this.setState({ tableData11: secondTo })
+            let third = response.magnum2[2]
+            let thirdTo = third.slice(1)
+            this.setState({ tableData12: thirdTo })
+            const date2 = response.date
+            this.setState({ date2: date2 })
+    
+            let data1 = response.special[0]
+            let data2 = response.special[1]
+            let data3 = response.special[2]
+            let newData = data1.concat(data2, data3)
+            this.setState({ tableData13: newData })
+    
+            let data4 = response.consolation[0]
+            let data5 = response.consolation[1]
+            let newData1 = data4.concat(data5)
+            this.setState({ tableData14: newData1 })
+    
+      })
+  }
+  async setDate3(newDate) {
+    let day = newDate.getDate()
+    console.log('date', day)
+    let month = newDate.getMonth() + 1
+    let year = newDate.getFullYear()
+    day = String(day).length > 1 ? day : '0' + day
+    month = String(month).length > 1 ? month : '0' + month
+    let fullDate = 'https://fourdresult.herokuapp.com/cashSweep2/' + year+'-'+month+'-'+day
+    console.log('date', fullDate)
+    // this.newStates(fullDate);
+    await fetch(fullDate, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        let first = response.magnum2[0]
+        let firstTo = first.slice(1)
+        this.setState({ tableData: firstTo })
+        let second = response.magnum2[1]
+        let secondTo = second.slice(1)
+        this.setState({ tableData1: secondTo })
+        let third = response.magnum2[2]
+        let thirdTo = third.slice(1)
+        this.setState({ tableData2: thirdTo })
+        const date3 = response.date
+        this.setState({ date3: date3 })
+
+        let data1 = response.special[0]
+        let data2 = response.special[1]
+        let data3 = response.special[2]
+        let newData = data1.concat(data2, data3)
+        this.setState({ tableData4: newData })
+
+      })
   }
   componentWillMount() {
     const { navigation } = this.props;
@@ -160,16 +278,16 @@ export class S extends Component {
                   <DatePicker
                     defaultDate={this.state.date}
                     minimumDate={new Date(2018, 1, 1)}
-                    maximumDate={new Date(2018, 12, 31)}
+                    maximumDate={new Date(2019, 12, 31)}
                     locale={"en"}
                     timeZoneOffsetInMinutes={undefined}
                     modalTransparent={false}
                     animationType={"fade"}
                     androidMode={"default"}
-                    placeHolderText={this.state.date}
+                    placeHolderText={this.state.date1}
                     textStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
                     placeHolderTextStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
-                    onDateChange={this.setDate}
+                    onDateChange={this.setDate1}
                     disabled={false}
                   />
                 </View>
@@ -181,7 +299,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData5} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -191,7 +309,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData6} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -201,7 +319,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData7} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -211,7 +329,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData8} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -221,7 +339,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData9} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -245,16 +363,16 @@ export class S extends Component {
                   <DatePicker
                     defaultDate={this.state.date}
                     minimumDate={new Date(2018, 1, 1)}
-                    maximumDate={new Date(2018, 12, 31)}
+                    maximumDate={new Date(2019, 12, 31)}
                     locale={"en"}
                     timeZoneOffsetInMinutes={undefined}
                     modalTransparent={false}
                     animationType={"fade"}
                     androidMode={"default"}
-                    placeHolderText={this.state.date}
+                    placeHolderText={this.state.date2}
                     textStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
                     placeHolderTextStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
-                    onDateChange={this.setDate}
+                    onDateChange={this.setDate2}
                     disabled={false}
                   />
                 </View>
@@ -266,7 +384,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData10} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -276,7 +394,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData11} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -286,7 +404,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData12} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -296,7 +414,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData13} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -306,7 +424,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData14} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -328,16 +446,16 @@ export class S extends Component {
                   <DatePicker
                     defaultDate={this.state.date}
                     minimumDate={new Date(2018, 1, 1)}
-                    maximumDate={new Date(2018, 12, 31)}
+                    maximumDate={new Date(2019, 12, 31)}
                     locale={"en"}
                     timeZoneOffsetInMinutes={undefined}
                     modalTransparent={false}
                     animationType={"fade"}
                     androidMode={"default"}
-                    placeHolderText={this.state.date}
+                    placeHolderText={this.state.date3}
                     textStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
                     placeHolderTextStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
-                    onDateChange={this.setDate}
+                    onDateChange={this.setDate3}
                     disabled={false}
                   />
                 </View>
@@ -349,7 +467,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -359,7 +477,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData1} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -369,7 +487,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData2} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -379,7 +497,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData4} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -389,7 +507,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#F7F7F7' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData3} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
                     </TableWrapper>

@@ -13,8 +13,7 @@ class First extends Component {
       second: '',
       third: '',
       date: '',
-      month: '',
-      year: '',
+      date1:'',
       draw: '',
       tableHead2: ['Special'],
       tableHead4: ['特別獎'],
@@ -41,24 +40,15 @@ class First extends Component {
         this.setState({ tableData2: second })
         const third = response.Consolidation
         this.setState({ tableData3: third })
-        const date = response.Date[0]
-        this.setState({ date: date })
-        const month = response.Date[1]
-        this.setState({ month: month })
-        const year = response.Date[2]
-        this.setState({ year: year })
+        let date = response.Date[0]
+        let month = response.Date[1]
+        let year = response.Date[2]
+        let date1 = date+'/'+month+'/'+year
+        this.setState({date1:date1})
 
       })
   }
 
-  setDate(newDate) {
-    this.setState({ chosenDate: newDate });
-  }
-  dateText = () => {
-    return (
-      <Text>{this.state.date}/{this.state.month}/{this.state.year}</Text>
-    )
-  }
   componentWillMount() {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
@@ -109,7 +99,7 @@ class First extends Component {
                     modalTransparent={false}
                     animationType={"fade"}
                     androidMode={"default"}
-                    placeHolderText={this.dateText()}
+                    placeHolderText={this.state.date1}
                     textStyle={{ color: "#000", fontSize: 18, paddingRight: 5 }}
                     placeHolderTextStyle={{ color: "#000", fontSize: 18, paddingRight: 5 }}
                     onDateChange={this.setDate}

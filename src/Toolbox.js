@@ -106,7 +106,7 @@ export class Toolbox extends Component {
               <Button info style={styles.button1}><Text style={{ color: '#fff', fontSize: 20 }}>{this.state.toggle ? "搜索选项" : "Search Options"}</Text></Button>
             </View>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}><Divider style={styles.divider}></Divider></View>
-            <Text style={{ paddingVertical: 10, fontSize: 20, fontWeight: '400', paddingHorizontal: 20 }}>{this.state.toggle ? "财富数字意义" : "Fortune Number Meaning"}</Text>
+            {/* <Text style={{ paddingVertical: 10, fontSize: 20, fontWeight: '400', paddingHorizontal: 20 }}>{this.state.toggle ? "财富数字意义" : "Fortune Number Meaning"}</Text>
             <Card style={{ paddingVertical: 5 }}>
               <CardItem>
                 <Body>
@@ -143,8 +143,8 @@ export class Toolbox extends Component {
                       <Image style={{ width: 30, height: 30, marginLeft: 20 }}
                         source={require('./assets/logo1.jpg')}
                       />
-                    </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center', paddingTop: 10 }}>
+                    </View> */}
+                    {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center', paddingTop: 10 }}>
                       <Button style={styles.button3}><Text style={{ color: '#fff' }}>1ST</Text></Button>
                       <Button style={{ width: 60, height: 25, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginLeft: 5 }}><Text style={{ color: '#fff' }}>2ND</Text></Button>
                       <Button style={{ width: 60, height: 25, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginLeft: 5 }}><Text style={{ color: '#fff' }}>3RD</Text></Button>
@@ -154,10 +154,10 @@ export class Toolbox extends Component {
                   </Body>
                 </CardItem>
               </Card>
-            </View>
-            <View>
-              <Card>
-                <Text style={{ paddingVertical: 10, fontSize: 20, fontWeight: '400', paddingHorizontal: 20 }}>{this.state.toggle ? "赢得历史" : "Winning History"}</Text>
+            </View> */}
+            {/* <View>
+              <Card> */}
+                {/* <Text style={{ paddingVertical: 10, fontSize: 20, fontWeight: '400', paddingHorizontal: 20 }}>{this.state.toggle ? "赢得历史" : "Winning History"}</Text> */}
                 {/* <Card style={{ paddingVertical: 5 }}>
                 <CardItem>
                   <Body>
@@ -182,8 +182,8 @@ export class Toolbox extends Component {
                   </Body>
                 </CardItem>
               </Card> */}
-              </Card>
-            </View>
+              {/* </Card>
+            </View> */}
             <View style={{ paddingHorizontal: 10 }}>
               <ScrollView>
                 <HTML html={this.state.result} {...htmlConfig} />

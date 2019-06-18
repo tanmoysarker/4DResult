@@ -24,6 +24,7 @@ class Fourth extends Component {
       toggle: false,
       tableTitle: ['1st', '2nd', '3rd']
     }
+    this.setDate = this.setDate.bind(this)
   }
 
   async componentDidMount() {
@@ -42,13 +43,38 @@ class Fourth extends Component {
         this.setState({ date: date })
         const draw = response.draw
         this.setState({ draw: draw })
-
-
       })
 
   }
-  setDate(newDate) {
-    this.setState({ chosenDate: newDate });
+  
+  async setDate(newDate) {
+    let day = newDate.getDate()
+    console.log('date', day)
+    let month = newDate.getMonth() + 1
+    let year = newDate.getFullYear()
+    day = String(day).length > 1 ? day : '0' + day
+    month = String(month).length > 1 ? month : '0' + month
+    let fullDate = 'https://fourdresult.herokuapp.com/damacai3/' + year+'-'+month+'-'+day
+    console.log('date', fullDate)
+    // this.newStates(fullDate);
+    await fetch(fullDate, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log('new', response.magnum)
+        const first = response.magnum
+        this.setState({ tableData1: first })
+        const second = response.special
+        this.setState({ tableData2: second })
+        const third = response.consolation
+        this.setState({ tableData3: third })
+        const date = response.date
+        this.setState({date: date})
+        const draw = response.draw
+        this.setState({draw: draw})
+
+      })
   }
   componentWillMount() {
     const { navigation } = this.props;
@@ -85,7 +111,7 @@ class Fourth extends Component {
                   <DatePicker
                     defaultDate={this.state.date}
                     minimumDate={new Date(2018, 1, 1)}
-                    maximumDate={new Date(2018, 12, 31)}
+                    maximumDate={new Date(2019, 12, 31)}
                     locale={"en"}
                     timeZoneOffsetInMinutes={undefined}
                     modalTransparent={false}
