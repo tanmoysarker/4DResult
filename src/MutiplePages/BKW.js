@@ -303,7 +303,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData10} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData10} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -313,7 +313,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData11} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData11} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -323,7 +323,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData12} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData12} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -333,7 +333,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData13} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData13} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -343,7 +343,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData14} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData14} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -387,7 +387,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -397,7 +397,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData1} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData1} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -407,7 +407,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData2} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData2} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -417,7 +417,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData4} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData4} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -427,7 +427,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData3} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData3} style={styles.title}  textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -471,7 +471,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData5} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData5} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -481,7 +481,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData6} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData6} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -491,7 +491,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData7} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData7} style={styles.title}  textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -501,7 +501,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData8} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData8} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
@@ -511,7 +511,7 @@ export class BKW extends Component {
                   <TableWrapper style={{ width: 110 }}>
                     <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
-                      <Col data={state.tableData9} style={styles.title} heightArr={[30, 30, 30, 30]} textStyle={styles.text} ></Col>
+                      <Col data={state.tableData9} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
                 </Table>
