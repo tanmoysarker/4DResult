@@ -50,6 +50,8 @@ export class MPT extends Component {
       toggle: false
 
     }
+    this.setDate1 = this.setDate1.bind(this)
+    this.setDate2 = this.setDate2.bind(this)
   }
 
   async componentDidMount() {
@@ -118,10 +120,102 @@ export class MPT extends Component {
         this.setState({ tableData9: newData1 })
       })
   }
-  dateText = () => {
+  dateText1 = () => {
     return (
       <Text>{this.state.date1}/{this.state.month}/{this.state.year}</Text>
     )
+  }
+  dateText2 = () => {
+    return (
+      <Text>{this.state.date1}/{this.state.month}/{this.state.year}</Text>
+    )
+  }
+  async setDate1(newDate) {
+    let day = newDate.getDate()
+    console.log('date', day)
+    let month = newDate.getMonth() + 1
+    let year = newDate.getFullYear()
+    day = String(day).length > 1 ? day : '0' + day
+    month = String(month).length > 1 ? month : '0' + month
+    let fullDate = 'https://fourdresult.herokuapp.com/nine932/'+year+month+day
+    console.log('date', fullDate)
+    // this.newStates(fullDate);
+    await fetch(fullDate, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log('new', response)
+        let first = response.First2[0]
+        let firstTo = first.slice(1)
+        this.setState({ tableData: firstTo })
+        let second = response.First2[1]
+        let secondTo = second.slice(1)
+        this.setState({ tableData1: secondTo })
+        let third = response.First2[2]
+        let thirdTo = third.slice(1)
+        this.setState({ tableData2: thirdTo })
+        const date1 = response.Date[0]
+        this.setState({date1: date1})
+        const month = response.Date[1]
+        this.setState({month: month})
+        const year = response.Date[2]
+        this.setState({year: year})
+
+        let data1 = response.Special[0]
+        let data2 = response.Special[1]
+        let newData = data1.concat(data2)
+        this.setState({ tableData4: newData })
+
+        let data4 = response.Consolidation[0]
+        let data5 = response.Consolidation[1]
+        let newData1 = data4.concat(data5)
+        this.setState({ tableData3: newData1 })
+
+      })
+  }
+  async setDate2(newDate) {
+    let day = newDate.getDate()
+    console.log('date', day)
+    let month = newDate.getMonth() + 1
+    let year = newDate.getFullYear()
+    day = String(day).length > 1 ? day : '0' + day
+    month = String(month).length > 1 ? month : '0' + month
+    let fullDate = 'https://fourdresult.herokuapp.com/nine972/'+year+month+day
+    console.log('date', fullDate)
+    // this.newStates(fullDate);
+    await fetch(fullDate, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log('new', response)
+        let first = response.First2[0]
+        let firstTo = first.slice(1)
+        this.setState({ tableData5: firstTo })
+        let second = response.First2[1]
+        let secondTo = second.slice(1)
+        this.setState({ tableData6: secondTo })
+        let third = response.First2[2]
+        let thirdTo = third.slice(1)
+        this.setState({ tableData7: thirdTo })
+        const date2 = response.Date[0]
+        this.setState({date2: date2})
+        const month2 = response.Date[1]
+        this.setState({month2: month2})
+        const year2 = response.Date[2]
+        this.setState({year2: year2})
+
+        let data1 = response.Special[0]
+        let data2 = response.Special[1]
+        let newData = data1.concat(data2)
+        this.setState({ tableData8: newData })
+
+        let data4 = response.Consolidation[0]
+        let data5 = response.Consolidation[1]
+        let newData1 = data4.concat(data5)
+        this.setState({ tableData9: newData1 })
+      })
   }
   componentWillMount() {
     const { navigation } = this.props;
@@ -158,16 +252,16 @@ export class MPT extends Component {
                   <DatePicker
                     defaultDate={this.state.date}
                     minimumDate={new Date(2018, 1, 1)}
-                    maximumDate={new Date(2018, 12, 31)}
+                    maximumDate={new Date(2019, 12, 31)}
                     locale={"en"}
                     timeZoneOffsetInMinutes={undefined}
                     modalTransparent={false}
                     animationType={"fade"}
                     androidMode={"default"}
-                    placeHolderText={this.dateText()}
+                    placeHolderText={this.dateText1()}
                     textStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
                     placeHolderTextStyle={{ color: "#000", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
-                    onDateChange={this.setDate}
+                    onDateChange={this.setDate1}
                     disabled={false}
                   />
                 </View>
@@ -242,16 +336,16 @@ export class MPT extends Component {
                   <DatePicker
                     defaultDate={this.state.date}
                     minimumDate={new Date(2018, 1, 1)}
-                    maximumDate={new Date(2018, 12, 31)}
+                    maximumDate={new Date(2019, 12, 31)}
                     locale={"en"}
                     timeZoneOffsetInMinutes={undefined}
                     modalTransparent={false}
                     animationType={"fade"}
                     androidMode={"default"}
-                    placeHolderText={this.dateText()}
+                    placeHolderText={this.dateText2()}
                     textStyle={{ color: "#fff", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
                     placeHolderTextStyle={{ color: "#fff", fontSize: 16,fontWeight:'bold', paddingTop: 10,paddingRight:8 }}
-                    onDateChange={this.setDate}
+                    onDateChange={this.setDate2}
                     disabled={false}
                   />
                 </View>

@@ -26,6 +26,7 @@ class First extends Component {
       toggle: false,
       tableTitle: ['1st', '2nd', '3rd']
     }
+    this.setDate = this.setDate.bind(this)
   }
 
   async componentDidMount() {
@@ -48,7 +49,36 @@ class First extends Component {
 
       })
   }
+  async setDate(newDate) {
+    let day = newDate.getDate()
+    console.log('date', day)
+    let month = newDate.getMonth() + 1
+    let year = newDate.getFullYear()
+    day = String(day).length > 1 ? day : '0' + day
+    month = String(month).length > 1 ? month : '0' + month
+    let fullDate = 'https://fourdresult.herokuapp.com/nine932/'+year+month+day
+    console.log('date', fullDate)
+    // this.newStates(fullDate);
+    await fetch(fullDate, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log('new', response)
+        const first = response.First
+        this.setState({ tableData1: first })
+        const second = response.Special
+        this.setState({ tableData2: second })
+        const third = response.Consolidation
+        this.setState({ tableData3: third })
+        let date = response.Date[0]
+        let month = response.Date[1]
+        let year = response.Date[2]
+        let date1 = date+'/'+month+'/'+year
+        this.setState({date1:date1})
 
+      })
+  }
   componentWillMount() {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
@@ -93,7 +123,7 @@ class First extends Component {
                   <DatePicker
                     defaultDate={this.state.date}
                     minimumDate={new Date(2018, 1, 1)}
-                    maximumDate={new Date(2018, 12, 31)}
+                    maximumDate={new Date(2019, 12, 31)}
                     locale={"en"}
                     timeZoneOffsetInMinutes={undefined}
                     modalTransparent={false}

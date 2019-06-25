@@ -49,39 +49,39 @@ class AuthLoadingScreen extends Component {
             const fourth = response
             this.setState({ Fourth: fourth })
           })
-        await fetch('https://fourdresult.herokuapp.com/sportstoto', {
-            method: 'GET',
-        }).then((response) => response.json()).then((response) => {
-            const fifth = response
-            this.setState({ Fifth: fifth })
-          })
-        await fetch('https://fourdresult.herokuapp.com/singapore4d', {
-            method: 'GET',
-        }).then((response) => response.json()).then((response) => {
-            const sixth = response
-            this.setState({ Sixth: sixth })
-          })
-        await fetch('https://fourdresult.herokuapp.com/sabah88', {
-            method: 'GET',
-        }).then((response) => response.json()).then((response) => {
-            const seventh = response
-            this.setState({ Seventh: seventh })
-          })
-        await fetch('https://fourdresult.herokuapp.com/cashSweep', {
-            method: 'GET',
-        }).then((response) => response.json()).then((response) => {
-            const eighth = response
-            this.setState({ Eighth: eighth })
-          })
-        await fetch('https://fourdresult.herokuapp.com/stc', {
-            method: 'GET',
-        }).then((response) => response.json()).then((response) => {
-            const ninth = response
-            this.setState({ Ninth: ninth })
-          })
+        // await fetch('https://fourdresult.herokuapp.com/sportstoto', {
+        //     method: 'GET',
+        // }).then((response) => response.json()).then((response) => {
+        //     const fifth = response
+        //     this.setState({ Fifth: fifth })
+        //   })
+        // await fetch('https://fourdresult.herokuapp.com/singapore4d', {
+        //     method: 'GET',
+        // }).then((response) => response.json()).then((response) => {
+        //     const sixth = response
+        //     this.setState({ Sixth: sixth })
+        //   })
+        // await fetch('https://fourdresult.herokuapp.com/sabah88', {
+        //     method: 'GET',
+        // }).then((response) => response.json()).then((response) => {
+        //     const seventh = response
+        //     this.setState({ Seventh: seventh })
+        //   })
+        // await fetch('https://fourdresult.herokuapp.com/cashSweep', {
+        //     method: 'GET',
+        // }).then((response) => response.json()).then((response) => {
+        //     const eighth = response
+        //     this.setState({ Eighth: eighth })
+        //   })
+        // await fetch('https://fourdresult.herokuapp.com/stc', {
+        //     method: 'GET',
+        // }).then((response) => response.json()).then((response) => {
+        //     const ninth = response
+        //     this.setState({ Ninth: ninth })
+        //   })
 
         
-        this.props.navigation.navigate(this.state.First && this.state.Second && this.state.Third && this.state.Fourth && this.state.Fifth && this.state.Sixth && this.state.Seventh && this.state.Eighth && this.state.Ninth ? 'App' : 'Auth')
+        this.props.navigation.navigate(this.state.First && this.state.Second && this.state.Third && this.state.Fourth  ? 'App' : 'Auth')
     }
 
     render() {
