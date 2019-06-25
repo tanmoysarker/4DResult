@@ -128,7 +128,7 @@ const DashboardStackNavigator = createStackNavigator({
 
 
 const AppSwitchNavigator = createSwitchNavigator({
-  AuthLoadingScreen: AuthLoadingScreen,
+  // AuthLoadingScreen: AuthLoadingScreen,
   App: {
     screen: DashboardStackNavigator
   }
