@@ -55,7 +55,22 @@ export class MPT extends Component {
   }
 
   async componentDidMount() {
-    await fetch('https://fourdresult.herokuapp.com/nine93', {
+    var today = new Date()
+    var time = today.getHours()
+    console.log(today)
+    let day = today.getDate()
+    if (time >= 15) {
+      day = today.getDate() 
+    } else {
+      day = today.getDate() - 1
+    }
+    console.log('date', day)
+    let month = today.getMonth() + 1
+    let year = today.getFullYear()
+    day = String(day).length > 1 ? day : '0' + day
+    month = String(month).length > 1 ? month : '0' + month
+    
+    await fetch('https://fourdresult.herokuapp.com/nine932/'+year+month+day, {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -69,9 +84,9 @@ export class MPT extends Component {
         let third = response.First2[2]
         let thirdTo = third.slice(1)
         this.setState({ tableData2: thirdTo })
-        const date1 = response.Date[0]
+        const date1 = response.Date[1]
         this.setState({date1: date1})
-        const month = response.Date[1]
+        const month = response.Date[0]
         this.setState({month: month})
         const year = response.Date[2]
         this.setState({year: year})
@@ -88,9 +103,24 @@ export class MPT extends Component {
 
       })
 
-      await fetch('https://fourdresult.herokuapp.com/nine97', {
-      method: 'GET',
-    })
+      var today1 = new Date()
+      var time1 = today1.getHours()
+      console.log(today1)
+      let day1 = today1.getDate()
+      if (time1 >= 19) {
+        day1 = today1.getDate() 
+      } else {
+        day1 = today1.getDate() - 1
+      } 
+      console.log('date', day1)
+      let month1 = today1.getMonth() + 1
+      let year1 = today1.getFullYear()
+      day1 = String(day1).length > 1 ? day1 : '0' + day1
+      month1 = String(month1).length > 1 ? month1 : '0' + month1
+      
+      await fetch('https://fourdresult.herokuapp.com/nine972/'+year1+month1+day1, {
+        method: 'GET',
+      })
       .then((response) => response.json())
       .then((response) => {
         let first = response.First2[0]
@@ -102,12 +132,12 @@ export class MPT extends Component {
         let third = response.First2[2]
         let thirdTo = third.slice(1)
         this.setState({ tableData7: thirdTo })
-        const date2 = response.Date[0]
-        this.setState({date2: date2})
-        const month2 = response.Date[1]
-        this.setState({month2: month2})
-        const year2 = response.Date[2]
-        this.setState({year2: year2})
+        const date1 = response.Date[1]
+        this.setState({date1: date1})
+        const month = response.Date[0]
+        this.setState({month: month})
+        const year = response.Date[2]
+        this.setState({year: year})
 
         let data1 = response.Special[0]
         let data2 = response.Special[1]

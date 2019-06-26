@@ -15,14 +15,15 @@ class Third extends Component {
       draw: '',
       tableHead2: ['Special'],
       tableHead4: ['特別獎'],
-      tableHead3: ['Consolidation'],
+      tableHead3: ['Consolation'],
       tableHead5: ['安慰獎'],
       tableData1: [],
       tableData2: [],
       tableData3: [],
       chosenDate: new Date(),
       toggle: false,
-      tableTitle: ['1st', '2nd', '3rd']
+      tableTitle: ['1st', '2nd', '3rd'],
+      live: false
     }
     this.setDate = this.setDate.bind(this)
   }
@@ -43,8 +44,16 @@ class Third extends Component {
         this.setState({ date: date })
         const draw = response.draw
         this.setState({ draw: draw })
-
       })
+      var today = new Date()
+      var time = today.getHours()
+      console.log(today.getMinutes())
+      var weekDay = today.getDay()
+      if ((time >= 19) && (time <= 20 ) && (weekDay === 0 ||3 ||6)){
+        if(today.getMinutes()<=30){
+        this.setState({ live: true })
+      } 
+    }
   }
 
   async setDate(newDate) {
@@ -91,8 +100,10 @@ class Third extends Component {
       // error reading value
     }
   }
+
   render() {
     const state = this.state;
+    console.log('live',this.state.live)
     return (
       <Container style={{ backgroundColor: '#fff' }}>
         <Content>
@@ -124,7 +135,7 @@ class Third extends Component {
                   />
                 </Left>
                 <Body></Body>
-                <Right style={{ flexDirection: 'row', justifyContent: 'flex-end', paddingRight: 10 }}><Icon name='refresh' style={{ color: '#000', fontSize: 24, marginRight: 15 }} /></Right>
+                <Right style={{ flexDirection: 'row', justifyContent: 'flex-end', paddingRight: 10 }}>{(this.state.live) ? <Icon name='football' style={{ color: '#000', fontSize: 24, marginRight: 15 }}/>: <Icon name='refresh' style={{ color: '#000', fontSize: 24, marginRight: 15 }} />}</Right>
 
               </View>
             </Card>

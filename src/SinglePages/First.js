@@ -17,7 +17,7 @@ class First extends Component {
       draw: '',
       tableHead2: ['Special'],
       tableHead4: ['特別獎'],
-      tableHead3: ['Consolidation'],
+      tableHead3: ['Consolation'],
       tableHead5: ['安慰獎'],
       tableData1: [],
       tableData2: [],
@@ -30,7 +30,22 @@ class First extends Component {
   }
 
   async componentDidMount() {
-    await fetch('https://fourdresult.herokuapp.com/nine93', {
+    var today = new Date()
+    var time = today.getHours()
+    console.log(today)
+    let day = today.getDate()
+    if (time >= 15) {
+      day = today.getDate() 
+    } else {
+      day = today.getDate() - 1
+    }
+    console.log('date', day)
+    let month = today.getMonth() + 1
+    let year = today.getFullYear()
+    day = String(day).length > 1 ? day : '0' + day
+    month = String(month).length > 1 ? month : '0' + month
+    
+    await fetch('https://fourdresult.herokuapp.com/nine932/'+year+month+day, {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -41,8 +56,8 @@ class First extends Component {
         this.setState({ tableData2: second })
         const third = response.Consolidation
         this.setState({ tableData3: third })
-        let date = response.Date[0]
-        let month = response.Date[1]
+        let date = response.Date[1]
+        let month = response.Date[0]
         let year = response.Date[2]
         let date1 = date+'/'+month+'/'+year
         this.setState({date1:date1})
@@ -71,8 +86,8 @@ class First extends Component {
         this.setState({ tableData2: second })
         const third = response.Consolidation
         this.setState({ tableData3: third })
-        let date = response.Date[0]
-        let month = response.Date[1]
+        let date = response.Date[1]
+        let month = response.Date[0]
         let year = response.Date[2]
         let date1 = date+'/'+month+'/'+year
         this.setState({date1:date1})
