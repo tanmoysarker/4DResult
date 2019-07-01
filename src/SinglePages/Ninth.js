@@ -15,13 +15,15 @@ class Ninth extends Component {
       draw: '',
       tableHead2: ['Special'],
       tableHead4: ['特別獎'],
+      tableHead6: ['Khas'],
       tableHead3: ['Consolation'],
       tableHead5: ['安慰獎'],
+      tableHead7: ['Penghiburan'],
       tableData1: [],
       tableData2: [],
       tableData3: [],
       chosenDate: new Date(),
-      toggle: false,
+      toggle: 0,
       tableTitle: ['1st', '2nd', '3rd'],
       live: false
     }
@@ -109,7 +111,7 @@ class Ninth extends Component {
             <Card style={{ backgroundColor: '#CFD7DC', height: 100, paddingTop: 10 }}>
               <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
                 <Left style={{ flexDirection: 'row' }}><Text style={{ color: '#000', fontSize: 16 }}>{this.state.draw}</Text></Left>
-                <Body><Text style={{ color: '#000', fontSize: 20, fontWeight: "bold" }}>{this.state.toggle ? "砂勞越大萬" : "Cash Sweep"}</Text></Body>
+                <Body><Text style={{ color: '#000', fontSize: 20, fontWeight: "bold" }}>{(this.state.toggle) === 0 ? "Cash Sweep" : (this.state.toggle) === 1 ? "砂勞越大萬" : "Cash Sweep"}</Text></Body>
                 <Right><Image source={require('../assets/cashsweep.png')} style={{ width: 40, height: 40 }}
                 /></Right>
               </View>
@@ -153,18 +155,18 @@ class Ninth extends Component {
           </View>
           <View style={{ backgroundColor: '#fff' }}>
             <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-              <Row data={this.state.toggle ? (this.state.tableHead4) : (this.state.tableHead2)} style={styles.head} textStyle={styles.text} />
+              <Row data={(this.state.toggle) === 0 ? (this.state.tableHead2) : (this.state.toggle) === 1 ? (this.state.tableHead4): (this.state.tableHead6)} style={styles.head} textStyle={styles.text} />
               <Rows data={state.tableData2} textStyle={styles.text2} />
             </Table>
           </View>
           <View style={{ backgroundColor: '#fff' }}>
             <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-              <Row data={this.state.toggle ? (this.state.tableHead5) : (this.state.tableHead3)} style={styles.head} textStyle={styles.text} />
+              <Row data={(this.state.toggle) === 0 ? (this.state.tableHead3) : (this.state.toggle) === 1 ? (this.state.tableHead5): (this.state.tableHead7)} style={styles.head} textStyle={styles.text} />
               <Rows data={state.tableData3} textStyle={styles.text2} />
             </Table>
           </View>
           <View style={{ paddingVertical: 20 }}>
-            <Button style={{ width: '100%', backgroundColor: '#CFD7DC', alignItems: 'center', justifyContent: 'center' }}><Text style={{ color: '#000', fontSize: 20, fontWeight: "bold" }}>{this.state.toggle ? "分享" : "Share"}</Text></Button>
+            <Button style={{ width: '100%', backgroundColor: '#CFD7DC', alignItems: 'center', justifyContent: 'center' }}><Text style={{ color: '#000', fontSize: 20, fontWeight: "bold" }}>{(this.state.toggle) === 0 ? "Share" : (this.state.toggle) === 1 ? "分享" : "Kongsi"}</Text></Button>
           </View>
         </Content>
       </Container>

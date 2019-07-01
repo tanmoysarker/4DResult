@@ -9,7 +9,7 @@ class Toolbox1 extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      toggle: false
+      toggle: 0
     }
   }
   componentWillMount() {
@@ -33,20 +33,20 @@ class Toolbox1 extends Component{
         <Container>
         <Header>
             <Body style={{marginLeft:20}}>
-              <Title>{this.state.toggle ? "工具箱" : "Toolbox"}</Title>
+              <Title>{(this.state.toggle) === 0 ? "Toolbox" : (this.state.toggle) === 1 ? "工具箱": "Kotak peralatan"}</Title>
             </Body>
           </Header>
         <Content>
           <ListItem onPress={()=> this.props.navigation.navigate('Toolbox')}>
           <Icon name='stats' style={{color:'blue'}}/>
             <Body>
-              <Text style={styles.text}>{this.state.toggle ? "4D 数字统计和细节" : "4D Number Stats & Detail"}</Text>
+              <Text style={styles.text}>{(this.state.toggle) === 0 ? "4D Number Stats & Detail" : (this.state.toggle) === 1 ? "4D 数字统计和细节": "Nombor Statistik 4D & Butiran"}</Text>
             </Body>
           </ListItem>
           <ListItem onPress={()=> this.props.navigation.navigate('LuckySpin')}>
           <Icon name='planet' style={{color:'blue'}}/>
             <Body>
-              <Text style={styles.text}>{this.state.toggle ? "旋转我的运气" : "Spin My Luck"}</Text>
+              <Text style={styles.text}>{(this.state.toggle) === 0 ? "Spin My Luck" : (this.state.toggle) === 1 ? "旋转我的运气": "berputar saya nasib"}</Text>
             </Body>
           </ListItem>
         </Content>

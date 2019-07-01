@@ -33,7 +33,7 @@ export class S extends Component {
       tableData12: [],
       tableData13: [],
       tableData14: [],
-      toggle: false
+      toggle: 0
     }
     this.setDate1 = this.setDate1.bind(this)
     this.setDate2 = this.setDate2.bind(this)
@@ -271,7 +271,7 @@ export class S extends Component {
                   <Image source={require('../assets/sabah88.jpg')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>{this.state.toggle ?"沙巴萬字"  : "Sabah 88"}</Text>
+                  <Text style={styles.textStyle}>{(this.state.toggle) === 0 ? "Sabah 88" : (this.state.toggle) === 1 ? "沙巴萬字" : "Sabah 88"}</Text>
                 </View>
                 <View style={{ flexDirection: 'row',paddingLeft:6  }}>
                   <Icon name='calendar' style={{ color: '#000', paddingTop: 10, fontSize: 18 }} />
@@ -299,7 +299,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "1ST Prize" : (this.state.toggle) === 1 ? "首獎": "Hadiah 1ST"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData5} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -309,7 +309,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "2ND Prize" : (this.state.toggle) === 1 ? "二獎": "Hadiah 2ND"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData6} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -319,7 +319,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "3RD Prize" : (this.state.toggle) === 1 ? "三獎": "Hadiah 3RD"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData7} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -329,8 +329,8 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
-                    <TableWrapper style={{ flexDirection: 'row' }}>
+                    <Cell data={(this.state.toggle) === 0 ? "Special" : (this.state.toggle) === 1 ? "特別獎": "Khas"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <TableWrapper style={{ flexDirection: 'row',height:550 }}>
                       <Col data={state.tableData8} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
@@ -339,8 +339,8 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
-                    <TableWrapper style={{ flexDirection: 'row' }}>
+                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Penghiburan"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <TableWrapper style={{ flexDirection: 'row',height:550}}>
                       <Col data={state.tableData9} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
@@ -356,7 +356,7 @@ export class S extends Component {
                   <Image source={require('../assets/stc.jpg')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>{this.state.toggle ?"山打根赛马会"  : "STC 4D"}</Text>
+                  <Text style={styles.textStyle}>{(this.state.toggle) === 0 ? "STC 4D" : (this.state.toggle) === 1 ? "山打根赛马会" : "STC 4D"}</Text>
                 </View>
                 <View style={{ flexDirection: 'row',paddingLeft:6  }}>
                   <Icon name='calendar' style={{ color: '#000', paddingTop: 10, fontSize: 18 }} />
@@ -384,7 +384,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "1ST Prize" : (this.state.toggle) === 1 ? "首獎": "Hadiah 1ST"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData10} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -394,7 +394,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "2ND Prize" : (this.state.toggle) === 1 ? "二獎": "Hadiah 2ND"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData11} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -404,7 +404,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "3RD Prize" : (this.state.toggle) === 1 ? "三獎": "Hadiah 3RD"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData12} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -414,8 +414,8 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
-                    <TableWrapper style={{ flexDirection: 'row' }}>
+                    <Cell data={(this.state.toggle) === 0 ? "Special" : (this.state.toggle) === 1 ? "特別獎": "Khas"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <TableWrapper style={{ flexDirection: 'row',height:550 }}>
                       <Col data={state.tableData13} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
@@ -424,8 +424,8 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
-                    <TableWrapper style={{ flexDirection: 'row' }}>
+                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Penghiburan"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <TableWrapper style={{ flexDirection: 'row',height:550}}>
                       <Col data={state.tableData14} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
@@ -439,7 +439,7 @@ export class S extends Component {
                   <Image source={require('../assets/cashsweep.png')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>{this.state.toggle ?"砂勞越大萬"  : "Cash Sweep"}</Text>
+                  <Text style={styles.textStyle}>{(this.state.toggle) === 0 ? "Cash Sweep" : (this.state.toggle) === 1 ? "砂勞越大萬" : "Cash Sweep"}</Text>
                 </View>
                 <View style={{ flexDirection: 'row',paddingLeft:6  }}>
                   <Icon name='calendar' style={{ color: '#000', paddingTop: 10, fontSize: 18 }} />
@@ -467,7 +467,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "1ST Prize" : (this.state.toggle) === 1 ? "首獎": "Hadiah 1ST"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -477,7 +477,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "2ND Prize" : (this.state.toggle) === 1 ? "二獎": "Hadiah 2ND"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData1} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -487,7 +487,7 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "3RD Prize" : (this.state.toggle) === 1 ? "三獎": "Hadiah 3RD"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData2} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -497,8 +497,8 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
-                    <TableWrapper style={{ flexDirection: 'row' }}>
+                    <Cell data={(this.state.toggle) === 0 ? "Special" : (this.state.toggle) === 1 ? "特別獎": "Khas"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <TableWrapper style={{ flexDirection: 'row',height:550 }}>
                       <Col data={state.tableData4} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
@@ -507,8 +507,8 @@ export class S extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 110 }}>
-                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 110, height: 30, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
-                    <TableWrapper style={{ flexDirection: 'row' }}>
+                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Penghiburan"} style={{ width: 110, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <TableWrapper style={{ flexDirection: 'row',height:550 }}>
                       <Col data={state.tableData3} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
@@ -520,7 +520,7 @@ export class S extends Component {
             
           </View>
           <View style={{ paddingVertical: 20 }}>
-            <Button style={{ height: 50, width: '100%', backgroundColor: '#CFD7DC', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 20, color: '#000',fontWeight:'bold' }}>{this.state.toggle ? "分享" : "Share"}</Text></Button>
+            <Button style={{ height: 50, width: '100%', backgroundColor: '#CFD7DC', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 20, color: '#000',fontWeight:'bold' }}>{(this.state.toggle) === 0 ? "Share" : (this.state.toggle) === 1 ? "分享" : "Kongsi"}</Text></Button>
           </View>
       </View>
     )

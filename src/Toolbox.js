@@ -26,7 +26,21 @@ export class Toolbox extends Component {
     this.state = {
       num4d: '',
       result: null,
-      toggle: false
+      first:'',
+      second:'',
+      third:'',
+      special:'',
+      consolation:'',
+      sg:'',
+      mg:'',
+      cash:'',
+      toto:'',
+      sabah:'',
+      stc:'',
+      dama:'',
+      ninty:'',
+      toggle: 0,
+      data:''
     }
   }
 
@@ -47,9 +61,39 @@ export class Toolbox extends Component {
       body: formData
     }).then(response => response.text()).then(data => {
       console.log(data)
+      var data = data
+      var count1 = (data.match(/1st/g) || []).length;
+      var count2 = (data.match(/2nd/g) || []).length;
+      var count3 = (data.match(/3rd/g) || []).length;
+      var scount = (data.match(/Special/g) || []).length;
+      var ccount = (data.match(/Consolation/g) || []).length;
+      var sg = (data.match(/logo_sg4d.gif/g) || []).length;
+      var stc = (data.match(/logo_stc4d.gif/g) || []).length;
+      var cash = (data.match(/logo_cashsweep.gif/g) || []).length;
+      var toto = (data.match(/logo_toto.gif/g) || []).length;
+      var mg = (data.match(/logo_magnum.gif/g) || []).length;
+      var sabah = (data.match(/logo_sabah88.gif/g) || []).length;
+      var dama = (data.match(/logo_damacai.gif/g) || []).length;
+      var ninty = (data.match(/993pm/g) || []).length;
       let strng = data
       let addStrng = this.replaceAll(data, 'img src="', 'img src="https://www.check4d.com')
-      this.setState({ result: addStrng })
+      this.setState({ 
+        result: addStrng,
+        first: count1,
+        second: count2,
+        third: count3,
+        special: scount,
+        consolation: ccount,
+        mg: mg,
+        dama: dama,
+        stc: stc,
+        sabah: sabah,
+        cash: cash,
+        toto: toto,
+        sg: sg,
+        ninty: ninty,
+        data: data
+      })
     })
       .catch((error) => {
         console.log(error)
@@ -75,18 +119,24 @@ export class Toolbox extends Component {
       // error reading value
     }
   }
+  // componentDidMount(){
+  //   const { navigation } = this.props;
+  //   const itemId = navigation.getParam('id')
+  //   console.log('itemId:',itemId)
+  // }
   render() {
     const Divider = (props) => {
       return <View {...props}>
         <View style={styles.line}></View>
       </View>
     }
+    console.log('dsa',this.state.data)
     return (
       <Container>
         <Content>
           <Header>
             <Body style={{ marginLeft: 20 }}>
-              <Title>{this.state.toggle ? "4D 数字统计和细节" : "4D Number Stats & Detail"}</Title>
+              <Title>{(this.state.toggle) === 0 ? "4D Number Stats & Detail" : (this.state.toggle) === 1 ? "4D 数字统计和细节": "Nombor Statistik 4D & Butiran"}</Title>
             </Body>
           </Header>
           <View>
@@ -98,12 +148,12 @@ export class Toolbox extends Component {
                     onChangeText={(text) => this.setState({ num4d: text })} />
                 </Item></Left>
               <Right>
-                <Button onPress={() => this.searchResult(this.state.num4d)} style={{ backgroundColor: '#BDC3C7', width: 70, height: 50, borderRadius: 10, alignItems: 'center', justifyContent: 'center', }}><Text style={{ color: '#fff', fontSize: 18 }}>{this.state.toggle ? "搜索" : "Search"}</Text></Button>
+                <Button onPress={() => this.searchResult(this.state.num4d)} style={{ backgroundColor: '#BDC3C7', width: 70, height: 50, borderRadius: 10, alignItems: 'center', justifyContent: 'center', }}><Text style={{ color: '#fff', fontSize: 18 }}>{(this.state.toggle) === 0 ? "Search" : (this.state.toggle) === 1 ? "搜索": "Carian"}</Text></Button>
               </Right>
             </View>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}><Divider style={styles.divider}></Divider></View>
             <View style={{ paddingVertical: 20 }}>
-              <Button info style={styles.button1}><Text style={{ color: '#fff', fontSize: 20 }}>{this.state.toggle ? "搜索选项" : "Search Options"}</Text></Button>
+              <Button info style={styles.button1}><Text style={{ color: '#fff', fontSize: 20 }}>{(this.state.toggle) === 0 ? "Search Options" : (this.state.toggle) === 1 ? "搜索选项": "Carian Pilihan"}</Text></Button>
             </View>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}><Divider style={styles.divider}></Divider></View>
             {/* <Text style={{ paddingVertical: 10, fontSize: 20, fontWeight: '400', paddingHorizontal: 20 }}>{this.state.toggle ? "财富数字意义" : "Fortune Number Meaning"}</Text>
@@ -112,78 +162,68 @@ export class Toolbox extends Component {
                 <Body>
                 </Body>
               </CardItem>
-            </Card>
-            <View>
-              <Text style={{ paddingVertical: 10, fontSize: 20, fontWeight: '400', paddingHorizontal: 20 }}>{this.state.toggle ? "总胜利历史" : "Total Win History"}</Text>
-              <Card style={{ paddingVertical: 5, alignItems: 'center', justifyContent: 'center' }}>
+            </Card> */}
+            <View style={[(this.state.data) !== null ? styles.textvalid : styles.textinvalid]}>
+              <Text style={{ paddingVertical: 10, fontSize: 20, fontWeight: '400', paddingHorizontal: 20 }}>{(this.state.toggle) === 0 ? "Total Win History" : (this.state.toggle) === 1 ? "总胜利历史": "jumlahnya Menang Sejarah"}</Text>
+              <Card style={{ paddingVertical: 5, alignItems: 'center', justifyContent: 'center',paddingBottom:30 }}>
                 <CardItem>
                   <Body>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center' }}>
-                      <Image style={{ width: 30, height: 30 }}
-                        source={require('./assets/logo1.jpg')} />
-                      <Image style={{ width: 30, height: 30, marginLeft: 20 }}
-                        source={require('./assets/logo1.jpg')}
+                     <Image style={{ width: 30, height: 30,borderRadius:10}}
+                        source={require('./assets/993.png')}
                       />
-                      <Image style={{ width: 30, height: 30, marginLeft: 20 }}
-                        source={require('./assets/logo1.jpg')}
+                      <Image style={{ width: 30, height: 30, marginLeft: 40,borderRadius:10  }}
+                        source={require('./assets/magnum.jpg')} />
+                      <Image style={{ width: 30, height: 30, marginLeft: 40,borderRadius:10 }}
+                        source={require('./assets/damacai.png')}
                       />
-                      <Image style={{ width: 30, height: 30, marginLeft: 20 }}
-                        source={require('./assets/logo1.jpg')}
+                      <Image style={{ width: 30, height: 30, marginLeft: 40,borderRadius:10 }}
+                        source={require('./assets/toto.png')}
                       />
                     </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center' }}>
-                      <Image style={{ width: 30, height: 30 }}
-                        source={require('./assets/logo1.jpg')} />
-                      <Image style={{ width: 30, height: 30, marginLeft: 20 }}
-                        source={require('./assets/logo1.jpg')}
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center', paddingTop: 10}}>
+                     <Text>{this.state.ninty}</Text>
+                     <Text style={{  marginLeft: 60  }}>{this.state.mg}</Text>
+                     <Text style={{  marginLeft: 60  }}>{this.state.dama}</Text>
+                     <Text style={{  marginLeft: 60  }}>{this.state.toto}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center', paddingTop: 40 }}>
+                     <Image style={{ width: 30, height: 30,borderRadius:10}}
+                        source={require('./assets/singapore.jpeg')}
                       />
-                      <Image style={{ width: 30, height: 30, marginLeft: 20 }}
-                        source={require('./assets/logo1.jpg')}
+                      <Image style={{ width: 30, height: 30, marginLeft: 40,borderRadius:10  }}
+                        source={require('./assets/cashsweep.png')} />
+                      <Image style={{ width: 30, height: 30, marginLeft: 40,borderRadius:10 }}
+                        source={require('./assets/sabah88.jpg')}
                       />
-                      <Image style={{ width: 30, height: 30, marginLeft: 20 }}
-                        source={require('./assets/logo1.jpg')}
+                      <Image style={{ width: 30, height: 30, marginLeft: 40,borderRadius:10 }}
+                        source={require('./assets/stc.jpg')}
                       />
-                    </View> */}
-                    {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center', paddingTop: 10 }}>
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center', paddingTop: 10}}>
+                     <Text>{this.state.sg}</Text>
+                     <Text style={{  marginLeft: 60  }}>{this.state.cash}</Text>
+                     <Text style={{  marginLeft: 60  }}>{this.state.sabah}</Text>
+                     <Text style={{  marginLeft: 60  }}>{this.state.stc}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center', paddingTop: 40 }}>
                       <Button style={styles.button3}><Text style={{ color: '#fff' }}>1ST</Text></Button>
-                      <Button style={{ width: 60, height: 25, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginLeft: 5 }}><Text style={{ color: '#fff' }}>2ND</Text></Button>
-                      <Button style={{ width: 60, height: 25, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginLeft: 5 }}><Text style={{ color: '#fff' }}>3RD</Text></Button>
-                      <Button style={{ width: 60, height: 25, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginLeft: 5 }}><Text style={{ color: '#fff' }}>SPE</Text></Button>
-                      <Button style={{ width: 60, height: 25, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginLeft: 5 }}><Text style={{ color: '#fff' }}>CON</Text></Button>
+                      <Button style={styles.button4}><Text style={{ color: '#fff' }}>2ND</Text></Button>
+                      <Button style={styles.button4}><Text style={{ color: '#fff' }}>3RD</Text></Button>
+                      <Button style={styles.button5}><Text style={{ color: '#fff' }}>SPE</Text></Button>
+                      <Button style={styles.button5}><Text style={{ color: '#fff' }}>CON</Text></Button>
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center', paddingTop: 10}}>
+                     <Text>{this.state.first}</Text>
+                     <Text style={{  marginLeft: 55  }}>{this.state.second}</Text>
+                     <Text style={{  marginLeft: 55  }}>{this.state.third}</Text>
+                     <Text style={{  marginLeft: 55  }}>{this.state.special}</Text>
+                     <Text style={{  marginLeft: 55  }}>{this.state.consolation}</Text>
                     </View>
                   </Body>
                 </CardItem>
               </Card>
-            </View> */}
-            {/* <View>
-              <Card> */}
-                {/* <Text style={{ paddingVertical: 10, fontSize: 20, fontWeight: '400', paddingHorizontal: 20 }}>{this.state.toggle ? "赢得历史" : "Winning History"}</Text> */}
-                {/* <Card style={{ paddingVertical: 5 }}>
-                <CardItem>
-                  <Body>
-                    <View style={{ flexDirection: 'row',paddingHorizontal:10 ,flexWrap:'wrap'}}>
-                      <Button style={{
-                        width: 60, backgroundColor: '#42f471', borderRadius: 8, alignItems: 'center',
-                        justifyContent: 'center'
-                      }}><Text style={{ color: '#fff' }}>4D</Text></Button>
-                      <Button style={{
-                        width: 60, backgroundColor: '#f44149', borderRadius: 8, alignItems: 'center',
-                        justifyContent: 'center'
-                      }}><Text style={{ color: '#fff' }}>Price</Text></Button>
-                      <Button style={{
-                        width: 100, backgroundColor: '#f4d041', borderRadius: 8, alignItems: 'center',
-                        justifyContent: 'center'
-                      }}><Text style={{ color: '#fff' }}>Date</Text></Button>
-                      <Button style={{
-                        width: 60, backgroundColor: '#41d9f4', borderRadius: 8, alignItems: 'center',
-                        justifyContent: 'center'
-                      }}><Text style={{ color: '#fff' }}>Gap</Text></Button>
-                    </View>
-                  </Body>
-                </CardItem>
-              </Card> */}
-              {/* </Card>
-            </View> */}
+            </View>
             <View style={{ paddingHorizontal: 10 }}>
               <ScrollView>
                 <HTML html={this.state.result} {...htmlConfig} />
@@ -220,6 +260,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   button3: {
-    width: 60, height: 25, borderRadius: 10, alignItems: 'center', justifyContent: 'center'
+    width: 60, height: 25, borderRadius: 10, alignItems: 'center', justifyContent: 'center',backgroundColor:'red'
+  },
+  button4: {
+    width: 60, height: 25, borderRadius: 10, alignItems: 'center', justifyContent: 'center',backgroundColor:'red',marginLeft:5
+  },
+  button5: {
+    width: 60, height: 25, borderRadius: 10, alignItems: 'center', justifyContent: 'center',marginLeft:5
+  },
+  textinvalid:{
+    display:'none'
+  },
+  textvalid:{
+    paddingBottom:2
   }
 });

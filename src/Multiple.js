@@ -33,7 +33,7 @@ export class Multiple extends Component {
       tableData5: [
         ['----']
       ],
-      toggle: false
+      toggle: 0
     }
   }
   componentWillMount() {
@@ -58,7 +58,7 @@ export class Multiple extends Component {
       <Container>
         <Header>
           <Body style={{ marginLeft: 20 }}>
-            <Title>{this.state.toggle ? "多" : "Multiple"}</Title>
+            <Title>{(this.state.toggle) === 0 ? "Multiple" : (this.state.toggle) === 1 ? "多" : "Pelbagai"}</Title>
           </Body>
         </Header>
         <Content>

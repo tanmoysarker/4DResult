@@ -19,7 +19,7 @@ class Single extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      toggle: false
+      toggle: 0
     }
   }
 
@@ -46,7 +46,7 @@ class Single extends Component{
         <Content>
         <Header>
             <Body style={{marginLeft:20}}>
-              <Title>{this.state.toggle ? "单" : "Single"}</Title>
+              <Title>{(this.state.toggle) === 0 ? "Single" : (this.state.toggle) === 1 ? "单" : "Tunggal"}</Title>
             </Body>
           </Header>
           

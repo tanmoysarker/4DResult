@@ -47,7 +47,7 @@ export class MPT extends Component {
       tableData6: [
         ['','']
       ],
-      toggle: false
+      toggle: 0
 
     }
     this.setDate1 = this.setDate1.bind(this)
@@ -275,7 +275,7 @@ export class MPT extends Component {
                   <Image source={require('../assets/993.png')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={styles.textStyle}>{this.state.toggle ?"99下午3点"  : "99 3PM"}</Text>
+                  <Text style={styles.textStyle}>{(this.state.toggle) === 0 ? "99 3PM" : (this.state.toggle) === 1 ? "99下午3点": "99 3Petang"}</Text>
                 </View>
                 <View style={{ flexDirection: 'row',paddingLeft:6 }}>
                   <Icon name='calendar' style={{ color: '#000', paddingTop: 10, fontSize: 18 }} />
@@ -303,7 +303,7 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 115, height: 30, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "1ST Prize" : (this.state.toggle) === 1 ? "首獎": "Hadiah 1ST"} style={{ width: 115, height: 40, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData} style={styles.title}  textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -313,7 +313,7 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 115, height: 30, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "2ND Prize" : (this.state.toggle) === 1 ? "二獎": "Hadiah 2ND"} style={{ width: 115, height: 40, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData1} style={styles.title}  textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -323,7 +323,7 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 115, height: 30, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "3RD Prize" : (this.state.toggle) === 1 ? "三獎": "Hadiah 3RD"} style={{ width: 115, height: 40, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData2} style={styles.title}  textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -333,8 +333,8 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 115, height: 30, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
-                    <TableWrapper style={{ flexDirection: 'row' }}>
+                    <Cell data={(this.state.toggle) === 0 ? "Special" : (this.state.toggle) === 1 ? "特別獎": "Khas"} style={{ width: 115, height: 40, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <TableWrapper style={{ flexDirection: 'row',height:550 }}>
                       <Col data={state.tableData4} style={styles.title}  textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
@@ -343,8 +343,8 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 115, height: 30, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
-                    <TableWrapper style={{ flexDirection: 'row' }}>
+                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Penghiburan"} style={{ width: 115, height: 40, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <TableWrapper style={{ flexDirection: 'row',height:550 }}>
                       <Col data={state.tableData3} style={styles.title}  textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
@@ -359,7 +359,7 @@ export class MPT extends Component {
                   <Image source={require('../assets/993.png')} style={styles.imageStyle}
                   /></View>
                 <View>
-                  <Text style={{color: '#fff', paddingTop: 10,fontSize:18,fontWeight:'bold'}}>{this.state.toggle ?"99下午7点"  : "99 7PM"}</Text>
+                  <Text style={{color: '#fff', paddingTop: 10,fontSize:18,fontWeight:'bold'}}>{(this.state.toggle) === 0 ? "99 7PM" : (this.state.toggle) === 1 ? "99下午7点": "99 7Petang"}</Text>
                 </View>
                 <View style={{ flexDirection: 'row',paddingLeft:6 }}>
                   <Icon name='calendar' style={{ color: '#fff', paddingTop: 10, fontSize: 18 }} />
@@ -387,7 +387,7 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"首獎"  : "1ST Prize"} style={{ width: 115, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "1ST Prize" : (this.state.toggle) === 1 ? "首獎": "Hadiah 1ST"} style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData5} style={styles.title}  textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -397,7 +397,7 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"二獎"  : "2ND Prize"} style={{ width: 115, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "2ND Prize" : (this.state.toggle) === 1 ? "二獎": "Hadiah 2ND"} style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData6} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -407,7 +407,7 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"三獎"  : "3RD Prize"} style={{ width: 115, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "3RD Prize" : (this.state.toggle) === 1 ? "三獎": "Hadiah 3RD"} style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData7} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -417,8 +417,8 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 115, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
-                    <TableWrapper style={{ flexDirection: 'row' }}>
+                    <Cell data={(this.state.toggle) === 0 ? "Special" : (this.state.toggle) === 1 ? "特別獎": "Khas"} style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <TableWrapper style={{ flexDirection: 'row',height:550 }}>
                       <Col data={state.tableData8} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
@@ -427,8 +427,8 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 115, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
-                    <TableWrapper style={{ flexDirection: 'row' }}>
+                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Penghiburan"} style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <TableWrapper style={{ flexDirection: 'row',height:550 }}>
                       <Col data={state.tableData9} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
                   </TableWrapper>
@@ -437,7 +437,7 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"奖金支付"  : "Bonus Payout"} style={{ width: 115, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "Bonus Payout" : (this.state.toggle) === 1 ? "奖金支付": "Bonus Pembayaran"}  style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData15} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -447,7 +447,7 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"特別獎"  : "Special"} style={{ width: 115, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "Special" : (this.state.toggle) === 1 ? "特別獎": "Khas"}  style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData16} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -457,7 +457,7 @@ export class MPT extends Component {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={this.state.toggle ?"安慰獎"  : "Consolation"} style={{ width: 115, height: 30, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Penghiburan"} style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData17} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -469,7 +469,7 @@ export class MPT extends Component {
             
           </View>
           <View style={{ paddingVertical: 20 }}>
-            <Button style={{ height: 50, width: '100%', backgroundColor: '#f6eb13', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 20, color: '#000',fontWeight:'bold' }}>{this.state.toggle ? "分享" : "Share"}</Text></Button>
+            <Button style={{ height: 50, width: '100%', backgroundColor: '#f6eb13', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 20, color: '#000',fontWeight:'bold' }}>{(this.state.toggle) === 0 ? "Share" : (this.state.toggle) === 1 ? "分享" : "Kongsi"}</Text></Button>
           </View>
       </View>
     )

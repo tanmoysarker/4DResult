@@ -16,13 +16,16 @@ class Second extends Component {
       draw: '',
       tableHead2: ['Special'],
       tableHead6: ['特別獎'],
+      tableHead8: ['Khas'],
       tableHead3: ['Consolation'],
       tableHead5: ['安慰獎'],
+      tableHead9: ['Penghiburan'],
       tableData1: [],
       tableData2: [],
       tableData3: [],
       tableHead4: ['Bonus Payout'],
       tableHead7: ['奖金支付'],
+      tableHead10: ['Bonus Pembayaran'],
       tableData4: [
         ['1ST Prize', '5000'],
         ['2ND Prize', '2000'],
@@ -37,8 +40,15 @@ class Second extends Component {
         ['特別獎', ''],
         ['安慰獎', '']
       ],
+      tableData11: [
+        ['Hadiah 1ST', '5000'],
+        ['Hadiah 2ND', '2000'],
+        ['Hadiah 3RD', '1000'],
+        ['Khas', ''],
+        ['Penghiburan', '']
+      ],
       chosenDate: new Date(),
-      toggle: false,
+      toggle: 0,
       tableTitle: ['1st', '2nd', '3rd']
     }
     this.setDate = this.setDate.bind(this)
@@ -131,7 +141,7 @@ class Second extends Component {
           <Card style={{ backgroundColor: '#ED1E24', height: 100, paddingTop: 10 }}>
             <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
               <Left></Left>
-              <Body><Text style={{ color: '#fff', fontSize: 20, fontWeight: "bold" }}>{this.state.toggle ? "99下午7点" : "99 7PM"}</Text></Body>
+              <Body><Text style={{ color: '#fff', fontSize: 20, fontWeight: "bold" }}>{(this.state.toggle) === 0 ? "99 7PM" : (this.state.toggle) === 1 ? "99下午7点": "99 7Petang"}</Text></Body>
               <Right><Image source={require('../assets/993.png')} style={{ width: 40, height: 40 }}
               /></Right>
             </View>
@@ -176,25 +186,25 @@ class Second extends Component {
 
         <View style={{ backgroundColor: '#fff' }}>
           <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-            <Row data={this.state.toggle ? (this.state.tableHead6) : (this.state.tableHead2)} style={styles.head} textStyle={styles.text} />
+            <Row data={(this.state.toggle) === 0 ? (this.state.tableHead2) : (this.state.toggle) === 1 ? (this.state.tableHead6): (this.state.tableHead8)} style={styles.head} textStyle={styles.text} />
             <Rows data={state.tableData2} textStyle={styles.text2} />
           </Table>
         </View>
         <View style={{ backgroundColor: '#fff' }}>
           <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-            <Row data={this.state.toggle ? (this.state.tableHead5) : (this.state.tableHead3)} style={styles.head} textStyle={styles.text} />
+            <Row data={(this.state.toggle) === 0 ? (this.state.tableHead3) : (this.state.toggle) === 1 ? (this.state.tableHead5): (this.state.tableHead9)} style={styles.head} textStyle={styles.text} />
             <Rows data={state.tableData3} textStyle={styles.text2} />
           </Table>
         </View>
         <View style={{ backgroundColor: '#fff' }}>
           <Table borderStyle={{ borderWidth: 2, borderColor: '#000' }}>
-            <Row data={this.state.toggle ? (this.state.tableHead7) : (this.state.tableHead4)} style={styles.head} textStyle={styles.text} />
-            <Rows data={this.state.toggle ? (this.state.tableData5) : (this.state.tableData4)} textStyle={styles.text2} />
+            <Row data={(this.state.toggle) === 0 ? (this.state.tableHead4) : (this.state.toggle) === 1 ? (this.state.tableHead7): (this.state.tableHead10)} style={styles.head} textStyle={styles.text} />
+            <Rows data={(this.state.toggle) === 0 ? (this.state.tableData4) : (this.state.toggle) === 1 ? (this.state.tableData5): (this.state.tableData11)} textStyle={styles.text2} />
           </Table>
         </View>
 
         <View style={{ paddingVertical: 20 }}>
-          <Button style={{ width: '100%', backgroundColor: '#ED1E24', alignItems: 'center', justifyContent: 'center' }}><Text style={{ color: '#fff', fontSize: 20, fontWeight: "bold" }}>{this.state.toggle ? "分享" : "Share"}</Text></Button>
+          <Button style={{ width: '100%', backgroundColor: '#ED1E24', alignItems: 'center', justifyContent: 'center' }}><Text style={{ color: '#fff', fontSize: 20, fontWeight: "bold" }}>{(this.state.toggle) === 0 ? "Share" : (this.state.toggle) === 1 ? "分享" : "Kongsi"}</Text></Button>
         </View>
       </View>
     );
