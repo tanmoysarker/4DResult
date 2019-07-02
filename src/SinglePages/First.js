@@ -20,7 +20,7 @@ class First extends Component {
       tableHead6: ['Khas'],
       tableHead3: ['Consolation'],
       tableHead5: ['安慰獎'],
-      tableHead7: ['Penghiburan'],
+      tableHead7: ['Saguhat'],
       tableData1: [],
       tableData2: [],
       tableData3: [],
@@ -81,6 +81,13 @@ class First extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
+        if(response === null){
+          this.setState({ 
+            tableData1: [],
+            tableData2: [],
+            tableData3: [],
+          })
+        } else {
         console.log('new', response)
         const first = response.First
         this.setState({ tableData1: first })
@@ -93,7 +100,7 @@ class First extends Component {
         let year = response.Date[2]
         let date1 = date+'/'+month+'/'+year
         this.setState({date1:date1})
-
+        }
       })
   }
   componentWillMount() {

@@ -19,7 +19,7 @@ class Second extends Component {
       tableHead8: ['Khas'],
       tableHead3: ['Consolation'],
       tableHead5: ['安慰獎'],
-      tableHead9: ['Penghiburan'],
+      tableHead9: ['Saguhat'],
       tableData1: [],
       tableData2: [],
       tableData3: [],
@@ -45,7 +45,7 @@ class Second extends Component {
         ['Hadiah 2ND', '2000'],
         ['Hadiah 3RD', '1000'],
         ['Khas', ''],
-        ['Penghiburan', '']
+        ['Saguhat', '']
       ],
       chosenDate: new Date(),
       toggle: 0,
@@ -104,6 +104,13 @@ class Second extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
+        if(response === null){
+          this.setState({ 
+            tableData1: [],
+            tableData2: [],
+            tableData3: [],
+          })
+        } else {
         console.log('new', response)
         const first = response.First
         this.setState({ tableData1: first })
@@ -116,6 +123,7 @@ class Second extends Component {
         let year = response.Date[2]
         let date1 = date+'/'+month+'/'+year
         this.setState({date1:date1})
+        }
       })
   }
   componentWillMount() {

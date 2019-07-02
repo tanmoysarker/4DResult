@@ -18,7 +18,7 @@ class Sixth extends Component {
       tableHead6: ['Khas'],
       tableHead3: ['Consolation'],
       tableHead5: ['安慰獎'],
-      tableHead7: ['Penghiburan'],
+      tableHead7: ['Saguhat'],
       tableData1: [],
       tableData2: [],
       tableData3: [],

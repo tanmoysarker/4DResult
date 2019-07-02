@@ -40,7 +40,8 @@ export class Toolbox extends Component {
       dama:'',
       ninty:'',
       toggle: 0,
-      data:''
+      data:'',
+      id:''
     }
   }
 
@@ -119,11 +120,69 @@ export class Toolbox extends Component {
       // error reading value
     }
   }
-  // componentDidMount(){
-  //   const { navigation } = this.props;
-  //   const itemId = navigation.getParam('id')
-  //   console.log('itemId:',itemId)
-  // }
+  componentDidMount(){
+    const { navigation } = this.props;
+    const itemId = navigation.getParam('id')
+    console.log('itemId:',itemId)
+    this.setState({id: itemId})
+    if(this.state.id !== ''){
+      formData.append('num4d', this.state.id)
+      formData.append('magnum', 1)
+      formData.append('damacai', 1)
+      formData.append('sportstoto', 1)
+      formData.append('sg4d', 1)
+      formData.append('stc4d', 1)
+      formData.append('sabah88', 1)
+      formData.append('stec', 1)
+  
+      fetch('https://www.check4d.com/statapiweb.php', {
+        method: 'POST',
+        body: formData
+      }).then(response => response.text()).then(data => {
+        console.log(data)
+        var data = data
+        var count1 = (data.match(/1st/g) || []).length;
+        var count2 = (data.match(/2nd/g) || []).length;
+        var count3 = (data.match(/3rd/g) || []).length;
+        var scount = (data.match(/Special/g) || []).length;
+        var ccount = (data.match(/Consolation/g) || []).length;
+        var sg = (data.match(/logo_sg4d.gif/g) || []).length;
+        var stc = (data.match(/logo_stc4d.gif/g) || []).length;
+        var cash = (data.match(/logo_cashsweep.gif/g) || []).length;
+        var toto = (data.match(/logo_toto.gif/g) || []).length;
+        var mg = (data.match(/logo_magnum.gif/g) || []).length;
+        var sabah = (data.match(/logo_sabah88.gif/g) || []).length;
+        var dama = (data.match(/logo_damacai.gif/g) || []).length;
+        var ninty = (data.match(/993pm/g) || []).length;
+        let strng = data
+        let addStrng = this.replaceAll(data, 'img src="', 'img src="https://www.check4d.com')
+        this.setState({ 
+          result: addStrng,
+          first: count1,
+          second: count2,
+          third: count3,
+          special: scount,
+          consolation: ccount,
+          mg: mg,
+          dama: dama,
+          stc: stc,
+          sabah: sabah,
+          cash: cash,
+          toto: toto,
+          sg: sg,
+          ninty: ninty,
+          data: data
+        })
+      })
+        .catch((error) => {
+          console.log(error)
+        })
+        .done()
+    }
+    else{
+      console.log('hoynai')
+    }
+  }
   render() {
     const Divider = (props) => {
       return <View {...props}>

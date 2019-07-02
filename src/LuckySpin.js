@@ -69,7 +69,9 @@ export default class LuckySpin extends Component{
                 <View style={styles.viewers}><Text style={styles.text}>{this.state.numberHolder4}</Text></View>
             </View>
             <View style={{paddingHorizontal:20,paddingVertical:40,flexDirection:'row'}}>
-                {(this.state.numberHolder1)!== 0 ? <Left><Button onPress={()=>this.props.navigation.navigate('Toolbox')}style={{backgroundColor:'#f4392c',borderRadius:4,width:140,height:50,alignItems:'center',justifyContent:'center'}}><Text style={styles.text2}>Number History</Text></Button></Left> : null}
+                {(this.state.numberHolder1)!== 0 ? <Left><Button onPress={()=>this.props.navigation.navigate('Toolbox',{
+                  id : (this.state.numberHolder1)+''+(this.state.numberHolder2)+''+(this.state.numberHolder3)+''+(this.state.numberHolder4)
+                })}style={{backgroundColor:'#f4392c',borderRadius:4,width:140,height:50,alignItems:'center',justifyContent:'center'}}><Text style={styles.text2}>{(this.state.toggle) === 0 ? "Number History" : (this.state.toggle) === 1 ? "号码历史": "Nombor Sejarah"}</Text></Button></Left> : null}
                 <Right><Button style={{backgroundColor:'#2165a5',borderRadius:4,width:165,height:50,alignItems:'center',justifyContent:'center'}} onPress={()=>this.generateRandom()}><Text style={styles.text2}>{(this.state.toggle) === 0 ? "Spin My Luck" : (this.state.toggle) === 1 ? "旋转我的运气": "berputar saya nasib"}</Text></Button></Right>    
             </View>
            
