@@ -6,6 +6,7 @@ import { IGNORED_TAGS, alterNode, makeTableRenderer } from 'react-native-render-
 import WebView from 'react-native-webview';
 import AsyncStorage from '@react-native-community/async-storage';
 
+
 const config = {
   WebViewComponent: WebView
 };
@@ -40,8 +41,7 @@ export class Toolbox extends Component {
       dama:'',
       ninty:'',
       toggle: 0,
-      data:'',
-      id:''
+      data:''
     }
   }
 
@@ -93,7 +93,8 @@ export class Toolbox extends Component {
         toto: toto,
         sg: sg,
         ninty: ninty,
-        data: data
+        data: data,
+        id:''
       })
     })
       .catch((error) => {
@@ -111,6 +112,7 @@ export class Toolbox extends Component {
       // The screen is focused
       this.changeLang()
     });
+    this.setState({num4d: navigation.getParam('id')})
   }
   async changeLang() {
     try {
@@ -120,67 +122,9 @@ export class Toolbox extends Component {
       // error reading value
     }
   }
-  componentDidMount(){
-    const { navigation } = this.props;
-    const itemId = navigation.getParam('id')
-    console.log('itemId:',itemId)
-    this.setState({id: itemId})
-    if(this.state.id !== ''){
-      formData.append('num4d', this.state.id)
-      formData.append('magnum', 1)
-      formData.append('damacai', 1)
-      formData.append('sportstoto', 1)
-      formData.append('sg4d', 1)
-      formData.append('stc4d', 1)
-      formData.append('sabah88', 1)
-      formData.append('stec', 1)
-  
-      fetch('https://www.check4d.com/statapiweb.php', {
-        method: 'POST',
-        body: formData
-      }).then(response => response.text()).then(data => {
-        console.log(data)
-        var data = data
-        var count1 = (data.match(/1st/g) || []).length;
-        var count2 = (data.match(/2nd/g) || []).length;
-        var count3 = (data.match(/3rd/g) || []).length;
-        var scount = (data.match(/Special/g) || []).length;
-        var ccount = (data.match(/Consolation/g) || []).length;
-        var sg = (data.match(/logo_sg4d.gif/g) || []).length;
-        var stc = (data.match(/logo_stc4d.gif/g) || []).length;
-        var cash = (data.match(/logo_cashsweep.gif/g) || []).length;
-        var toto = (data.match(/logo_toto.gif/g) || []).length;
-        var mg = (data.match(/logo_magnum.gif/g) || []).length;
-        var sabah = (data.match(/logo_sabah88.gif/g) || []).length;
-        var dama = (data.match(/logo_damacai.gif/g) || []).length;
-        var ninty = (data.match(/993pm/g) || []).length;
-        let strng = data
-        let addStrng = this.replaceAll(data, 'img src="', 'img src="https://www.check4d.com')
-        this.setState({ 
-          result: addStrng,
-          first: count1,
-          second: count2,
-          third: count3,
-          special: scount,
-          consolation: ccount,
-          mg: mg,
-          dama: dama,
-          stc: stc,
-          sabah: sabah,
-          cash: cash,
-          toto: toto,
-          sg: sg,
-          ninty: ninty,
-          data: data
-        })
-      })
-        .catch((error) => {
-          console.log(error)
-        })
-        .done()
-    }
-    else{
-      console.log('hoynai')
+  componentDidMount() {
+    if (this.state.id !== '') {
+      this.searchResult(this.state.num4d)
     }
   }
   render() {
@@ -204,7 +148,7 @@ export class Toolbox extends Component {
                 <Item style={{ width: 280, height: 40, borderRadius: 5, backgroundColor: '#F2F3F4', marginRight: 5 }}>
                   <Icon name="ios-search" />
                   <TextInput placeholder="Number" keyboardType="number-pad"
-                    onChangeText={(text) => this.setState({ num4d: text })} />
+                    onChangeText={(text) => this.setState({ num4d: text })} value={this.state.num4d}/>
                 </Item></Left>
               <Right>
                 <Button onPress={() => this.searchResult(this.state.num4d)} style={{ backgroundColor: '#BDC3C7', width: 70, height: 50, borderRadius: 10, alignItems: 'center', justifyContent: 'center', }}><Text style={{ color: '#fff', fontSize: 18 }}>{(this.state.toggle) === 0 ? "Search" : (this.state.toggle) === 1 ? "搜索": "Carian"}</Text></Button>
@@ -222,7 +166,7 @@ export class Toolbox extends Component {
                 </Body>
               </CardItem>
             </Card> */}
-            <View style={[(this.state.data) !== null ? styles.textvalid : styles.textinvalid]}>
+            <View style= {[this.state.data === null ? { display: 'none' } : '']}>
               <Text style={{ paddingVertical: 10, fontSize: 20, fontWeight: '400', paddingHorizontal: 20 }}>{(this.state.toggle) === 0 ? "Total Win History" : (this.state.toggle) === 1 ? "总胜利历史": "jumlahnya Menang Sejarah"}</Text>
               <Card style={{ paddingVertical: 5, alignItems: 'center', justifyContent: 'center',paddingBottom:30 }}>
                 <CardItem>

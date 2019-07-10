@@ -21,13 +21,13 @@ class Single extends Component{
     this.state = {
       toggle: 0
     }
+    this.changeLang()
   }
 
   componentWillMount() {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
       // The screen is focused
-       this.changeLang()
     });
   }
    async changeLang () {
