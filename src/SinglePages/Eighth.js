@@ -20,7 +20,7 @@ class Eighth extends Component {
       tableHead6: ['Khas'],
       tableHead3: ['Consolation'],
       tableHead5: ['安慰獎'],
-      tableHead7: ['Saguhat'],
+      tableHead7: ['Saguhati'],
       tableData1: [],
       tableData2: [],
       tableData3: [],
@@ -45,6 +45,7 @@ class Eighth extends Component {
         tableData1: [],
         tableData2: [],
         tableData3: [],
+        live: true
       })
     } else{
       await fetch('https://vip4dresult.azurewebsites.net/stc', {

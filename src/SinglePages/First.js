@@ -22,7 +22,7 @@ class First extends Component {
       tableHead6: ['Khas'],
       tableHead3: ['Consolation'],
       tableHead5: ['安慰獎'],
-      tableHead7: ['Saguhat'],
+      tableHead7: ['Saguhati'],
       tableData1: [],
       tableData2: [],
       tableData3: [],
@@ -60,7 +60,7 @@ class First extends Component {
           live: true
         })
   }else{
-    await fetch('https://vip4dresult.azurewebsites.net/nine93/'+year+month+day, {
+    await fetch('https://vip4dresult.azurewebsites.net/nine932/'+year+month+day, {
       method: 'GET',
     })
       .then((response) => response.json())

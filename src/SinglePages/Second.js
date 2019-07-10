@@ -21,7 +21,7 @@ class Second extends Component {
       tableHead8: ['Khas'],
       tableHead3: ['Consolation'],
       tableHead5: ['安慰獎'],
-      tableHead9: ['Saguhat'],
+      tableHead9: ['Saguhati'],
       tableData1: [],
       tableData2: [],
       tableData3: [],
@@ -47,7 +47,7 @@ class Second extends Component {
         ['Hadiah 2ND', '2000'],
         ['Hadiah 3RD', '1000'],
         ['Khas', ''],
-        ['Penghiburan', '']
+        ['Saguhati', '']
       ],
       chosenDate: new Date(),
       toggle: 0,
@@ -83,7 +83,7 @@ class Second extends Component {
         tableData3: [],
       })
 }else{
-  await fetch('https://vip4dresult.azurewebsites.net/nine97/'+year+month+day, {
+  await fetch('https://vip4dresult.azurewebsites.net/nine972/'+year+month+day, {
     method: 'GET',
   })
     .then((response) => response.json())
@@ -156,7 +156,6 @@ class Second extends Component {
     }) 
     .then(
       uri => this.setState({ uri: uri }),
-      console.log('dekhi',this.state.uri),
       (this.state.uri !== '') ? Share.open(shareImageBase64):''
     );
   }

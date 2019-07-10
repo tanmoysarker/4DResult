@@ -424,7 +424,7 @@ onOpen() {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Saguhat"} style={{ width: 115, height: 40, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Saguhati"} style={{ width: 115, height: 40, backgroundColor: '#f6eb13' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row',height:550 }}>
                       <Col data={state.tableData3} style={styles.title}  textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -508,7 +508,7 @@ onOpen() {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Saguhat"} style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Saguhati"} style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row',height:550 }}>
                       <Col data={state.tableData9} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
@@ -538,7 +538,7 @@ onOpen() {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Saguhat"} style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Saguhati"} style={{ width: 115, height: 40, backgroundColor: 'red' }} textStyle={{ color: '#fff', margin: 6, alignSelf: 'center',fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row' }}>
                       <Col data={state.tableData17} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>

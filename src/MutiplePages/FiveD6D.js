@@ -242,7 +242,7 @@ onOpen() {
               <View style={styles.container}>
                 <Table style={{ flexDirection: 'row' }} borderStyle={{ borderWidth: 4, borderColor: '#c5cbd6' }}>
                   <TableWrapper style={{ width: 115 }}>
-                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Saguhat"} style={{ width: 115, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
+                    <Cell data={(this.state.toggle) === 0 ? "Consolation" : (this.state.toggle) === 1 ? "安慰獎": "Saguhati"} style={{ width: 115, height: 40, backgroundColor: '#CFD7DC' }} textStyle={{ color: '#000', margin: 6, alignSelf: 'center',fontSize:16,fontWeight:'bold' }} />
                     <TableWrapper style={{ flexDirection: 'row',height:550}}>
                       <Col data={state.tableData14} style={styles.title} textStyle={styles.text} ></Col>
                     </TableWrapper>
