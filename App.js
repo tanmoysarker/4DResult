@@ -21,7 +21,12 @@ import AuthLoadingScreen from './AuthLoadingScreen'
 
 
 class customDrawerContentComponent extends Component {
- 
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggle: 0
+    }
+  }
   render() {
     return (
       <Container>
